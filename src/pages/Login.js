@@ -14,7 +14,7 @@ const Login = () => {
     };
 
     return (
-        <div className="grid grid-cols-2 h-screen">
+        <div className="bg-[#fbfcfc] grid grid-cols-2 h-screen">
             <div className="bg-zinc-300">
                 {/* Aquí puedes añadir una imagen de fondo o cualquier otro contenido que desees */}
             </div>
