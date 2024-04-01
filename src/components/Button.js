@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-const Button = ({text, size = 'w-32 h-10', color = 'bg-[#7f9fb5] hover:bg-[#7f9fb5b4] active:bg-[#95b8d0]', position, onClick = () => {}}) => {
+const Button = ({text, size = 'w-32 h-10', color = 'bg-[#7f9fb5] hover:bg-[#7f9fb5b4] active:bg-[#95b8d0]', onClick = () => {}}) => {
 
     return (
         <button className={`p-3 ${size} ${color} rounded-lg flex flex-col justify-center items-center`} onClick={onClick}>

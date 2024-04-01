@@ -31,10 +31,10 @@ const Register = () => {
                     <FormText label="Apellidos" placeholder="Apellidos"/>
                     <FormDate label="Fecha de nacimiento"/>
                     <FormSelect label="Género" options={["Seleccione una opción", "Hombre", "Mujer", "Otro"]}/>
-                    <FormDni label="DNI" placeholder="DNI"/>
-                    <FormPhone label="Teléfono" placeholder="Teléfono"/>
+                    <FormDni/>
+                    <FormPhone/>
                     <div className="col-span-2">
-                        <FormAddress label="Dirección" placeholder="Dirección"/>
+                        <FormAddress/>
                     </div>
                     <FormMail label="Correo electrónico" placeholder="Correo electrónico"/>
                     <FormPassword/>
@@ -48,7 +48,6 @@ const Register = () => {
                     </div>
 
                 </form>
-                {/* <h3 className="text-center text-slate-700 text-2xl font-normal font-['Kefa']">ó</h3> */}
                 <div className="p-5 w-auto h-auto bg-zinc-300 rounded-lg">
                     <div className="justify-center text-center">
                         <span><Text text="¿Ya tienes una cuenta?"/></span> 

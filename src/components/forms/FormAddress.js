@@ -3,15 +3,15 @@ import { useState } from "react";
 import Button from "../Button";
 import FormText from "./FormText";
 import FormSelect from "./FormSelect";
-const FormAddress = ({ label, placeholder}) => {
+const FormAddress = () => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const [street, setStreet] = useState("");
     const [number, setNumber] = useState("");
+    const [flat, setFlat] = useState("");
     const [town, setTown] = useState("");
     const [province, setProvince] = useState("");
-    const [community, setCommunity] = useState("");
     const [address, setAddress] = useState("");
 
     const handleOpenModal = () => setIsModalOpen(true);
@@ -19,19 +19,19 @@ const FormAddress = ({ label, placeholder}) => {
     const handleCloseModal = () => setIsModalOpen(false);
 
     const handleSubmitAddress = () => {
-        const fullAddress = `${street} ${number}, ${town}, ${province}, ${community}`;
+        const fullAddress = `${street} ${number} (${flat}), ${town}, ${province}`;
         setAddress(fullAddress);
         handleCloseModal();
     };
 
     return (
         <div className="p-2 flex-col justify-start items-start gap-0.5">
-            <label className="content-stretch text-slate-700 text-base font-normal font-['IBM Plex Sans'] leading-normal tracking-tight">{label}</label>
+            <label htmlFor="address" className="content-stretch text-slate-700 text-base font-normal font-['IBM Plex Sans'] leading-normal tracking-tight">Dirección</label>
             <input 
                 type="text" 
                 className="w-full self-stretch h-12 p-3 bg-neutral-50 rounded justify-start items-start gap-2.5 flex-1" 
                 value={address}
-                placeholder={placeholder} 
+                placeholder='Dirección'
                 readOnly
                 onClick={handleOpenModal}
             />
@@ -44,9 +44,9 @@ const FormAddress = ({ label, placeholder}) => {
 
                         <FormText label="Calle" placeholder="Calle" value={street} onChange={(e) => setStreet(e.target.value)} />
                         <FormText label="Número" placeholder="Número" value={number} onChange={(e) => setNumber(e.target.value)} />
+                        <FormText label="Piso" placeholder="Piso" value={flat} onChange={(e) => setFlat(e.target.value)}/>
                         <FormSelect label="Ciudad" options={["Seleccione una ciudad", "Jerez", "Madrid", "Barcelona", "Sevilla", "Cádiz"]} value={town} onChange={(e) => setTown(e.target.value)}/>
                         <FormSelect label="Provincia" options={["Seleccione una provincia", "Cádiz", "Sevilla", "Málaga", "Huelva", "Granada"]} value={province} onChange={(e) => setProvince(e.target.value)} />
-                        <FormSelect label="Comunidad Autónoma" options={["Seleccione una comunidad", "Andalucía", "Cataluña", "Madrid", "Comunidad Valenciana", "Galicia"]} value={community} onChange={(e) => setCommunity(e.target.value)}/>
 
                         <div className="flex justify-end mt-4">
                             <Button text="Guardar Dirección" size='w-40 h-9' onClick={handleSubmitAddress} />
