@@ -20,13 +20,13 @@ const Register = () => {
     };
 
     return (
-        <div className="bg-[#fbfcfc] grid grid-cols-2 h-screen">
-            <div className="bg-zinc-300">
+        <div className="bg-[#fbfcfc] grid grid-flow-col md:grid-cols-2 h-screen">
+            <div className="hidden md:block bg-zinc-300">
                 {/* Aquí puedes añadir una imagen de fondo o cualquier otro contenido que desees */}
             </div>
-            <div className="p-3 place-self-center grid grid-cols-none grid-flow-row gap-4">
+            <div className="p-3 place-self-center grid grid-flow-row gap-4">
                 <Title text="Registro" position='text-center'/>
-                <form onSubmit={handleSubmit} className="p-3 w-auto h-auto bg-zinc-300 rounded-lg grid grid-cols-2">
+                <form onSubmit={handleSubmit} className="p-3 w-full bg-zinc-300 rounded-lg md:grid md:grid-cols-2">
                     <FormText label="Nombre" placeholder="Nombre"/>
                     <FormText label="Apellidos" placeholder="Apellidos"/>
                     <FormDate label="Fecha de nacimiento"/>
@@ -39,7 +39,7 @@ const Register = () => {
                     <FormMail label="Correo electrónico" placeholder="Correo electrónico"/>
                     <FormPassword/>
 
-                    <div className="col-span-2 mt-2">
+                    <div className="col-span-2 mt-4">
                         <FormButton text="Registrarse" onClick={() => alert('Se ha registrado con éxito')}/>
                         <div className="justify-center text-center">
                             <span><Text text="Al registrarte, aceptas los"/></span> 
@@ -48,7 +48,7 @@ const Register = () => {
                     </div>
 
                 </form>
-                <div className="p-5 w-auto h-auto bg-zinc-300 rounded-lg">
+                <div className="p-5 w-full h-auto bg-zinc-300 rounded-lg">
                     <div className="justify-center text-center">
                         <span><Text text="¿Ya tienes una cuenta?"/></span> 
                         <span><Link text=" Inicia sesión" href="/login"/></span>

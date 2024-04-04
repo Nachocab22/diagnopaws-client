@@ -14,12 +14,12 @@ const Login = () => {
     };
 
     return (
-        <div className="bg-[#fbfcfc] grid grid-cols-2 h-screen">
-            <div className="bg-zinc-300">
+        <div className="bg-[#fbfcfc] grid grid-flow-col md:grid-cols-2 h-screen">
+            <div className="bg-zinc-300 hidden md:block">
                 {/* Aquí puedes añadir una imagen de fondo o cualquier otro contenido que desees */}
             </div>
             <div className="p-3 place-self-center">
-                <Title text="Iniciar sesión" position='text-center'/>
+                <Title text="Iniciar sesión" position="text-center"/>
                 <div className="flex-auto justify-center">
                     <form onSubmit={handleSubmit} className="p-5 w-auto h-auto bg-zinc-300 rounded-lg">
                         <FormMail label="Correo electrónico" placeholder="Correo electrónico"/>
@@ -30,7 +30,7 @@ const Login = () => {
                         </div>
                         <div className="mt-2 justify-center text-center">
                             <span><Text text="¿No tienes cuenta?"/></span> 
-                            <span><Link text=" Regístrate aqui" href="/register"/></span>
+                            <span><Link text=" Regístrate aqui" color="sky-600" href="/register"/></span>
                         </div>
                     </form>
                 </div>
