@@ -14,7 +14,7 @@ Link.propTypes = {
 };
 
 Link.defaultProps = {
-    color: 'sky-600',
+    color: "sky-600",
     href: '#'
 };
 
