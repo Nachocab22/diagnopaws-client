@@ -37,7 +37,7 @@ const Register = () => {
                     <FormText label="Nombre" placeholder="Nombre"/>
                     <FormText label="Apellidos" placeholder="Apellidos"/>
                     <FormDate label="Fecha de nacimiento"/>
-                    <FormSelect label="Género" options={["Seleccione una opción", "Hombre", "Mujer", "Otro"]} value={gender} onChange={handleGenderChange}/>
+                    <FormSelect label="Género" options={["Hombre", "Mujer", "Otro"]} value={gender} onChange={handleGenderChange}/>
                     <FormDni/>
                     <FormPhone/>
                     <div className="col-span-2">

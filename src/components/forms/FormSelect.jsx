@@ -9,7 +9,7 @@ const FormSelect = ({ label, options, value, onChange =() => {} }) => {
                 <select 
                     className="appearance-none w-full h-12 p-3 bg-neutral-50 rounded flex-col justify-start items-start gap-2.5 flex" 
                     value={value}
-                    defaultValue={options[0]}
+                    defaultValue="Seleccionar..."
                     onChange={onChange}
                 >
                 {options.map((option) => (

@@ -45,8 +45,8 @@ const FormAddress = () => {
                         <FormText label="Calle" placeholder="Calle" value={street} onChange={(e) => setStreet(e.target.value)} />
                         <FormText label="Número" placeholder="Número" value={number} onChange={(e) => setNumber(e.target.value)} />
                         <FormText label="Piso" placeholder="Piso" value={flat} onChange={(e) => setFlat(e.target.value)}/>
-                        <FormSelect label="Ciudad" options={["Seleccione una ciudad", "Jerez", "Madrid", "Barcelona", "Sevilla", "Cádiz"]} value={town} onChange={(e) => setTown(e.target.value)}/>
-                        <FormSelect label="Provincia" options={["Seleccione una provincia", "Cádiz", "Sevilla", "Málaga", "Huelva", "Granada"]} value={province} onChange={(e) => setProvince(e.target.value)} />
+                        <FormSelect label="Ciudad" options={["Jerez", "Madrid", "Barcelona", "Sevilla", "Cádiz"]} value={town} onChange={(e) => setTown(e.target.value)}/>
+                        <FormSelect label="Provincia" options={["Cádiz", "Sevilla", "Málaga", "Huelva", "Granada"]} value={province} onChange={(e) => setProvince(e.target.value)} />
 
                         <div className="flex justify-end mt-4">
                             <Button text="Guardar Dirección" size='w-40 h-9' onClick={handleSubmitAddress} />

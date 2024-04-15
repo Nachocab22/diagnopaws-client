@@ -11,15 +11,15 @@ const NewPetForm = () => {
     const navigate = useNavigate();
 
     const sexOptions = [
-        { key: 0, label: 'Macho', value: 'M' },
-        { key: 1, label: 'Hembra', value: 'F' }
+        {label: 'Macho', value: 'M' },
+        {label: 'Hembra', value: 'F' }
     ];
 
     const speciesOptions = [
-        { key: 0, label: 'Perro', value: 'Perro' },
-        { key: 1, label: 'Gato', value: 'Gato' },
-        { key: 2, label: 'Pajaro', value: 'Pajaro' },
-        { key: 3, label: 'Caballo', value: 'Caballo' }
+        {label: 'Perro', value: 'Perro' },
+        {label: 'Gato', value: 'Gato' },
+        {label: 'Pajaro', value: 'Pajaro' },
+        {label: 'Caballo', value: 'Caballo' }
     ];
 
     const handleSexChange = (e) => {
