@@ -30,7 +30,7 @@ const Login = () => {
                         </div>
                         <div className="mt-2 justify-center text-center">
                             <span><Text text="¿No tienes cuenta?"/></span> 
-                            <span><Link text=" Regístrate aqui" color="sky-600" href="/register"/></span>
+                            <span><Link text=" Regístrate aqui" href="/register"/></span>
                         </div>
                     </form>
                 </div>

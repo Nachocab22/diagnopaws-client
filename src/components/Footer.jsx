@@ -7,7 +7,7 @@ const Footer = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="bg-slate-700 fixed inset-x-0 bottom-0 h-14 flex items-center justify-between px-5">
+        <footer className="bg-slate-700 sticky mt-3 inset-x-0 bottom-0 h-14 flex flex-1 items-center justify-between px-5">
             <a
                 href="https://twitter.com"
                 target="_blank"
@@ -22,7 +22,7 @@ const Footer = () => {
                 <Link text="Condiciones de uso" color='white'/>
             </div>
             
-        </div>
+        </footer>
     );
 };
 

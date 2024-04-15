@@ -12,9 +12,14 @@ const PetIcon = ({ name, image }) => {
             <button 
                 className="w-32 h-32 top-5 rounded-full overflow-hidden mt-3 shadow-md shadow-gray-700 flex items-center justify-center p-0 border-0 relative"
                 onClick={() => navigate(`/pets/${name}`)}
-                style={{background: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center'}}
+                style={{
+                    backgroundImage: `url(${image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center center'
+                }}
                 aria-label={`Ver detalles de ${name}`}
             ></button>
+
         </div>
     );
 

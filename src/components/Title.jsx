@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
  */
 const Title = ({ text, color, position }) => {
     return (
-        <h1 className={`w-auto h-16 mb-5 text-${color} ${position} text-5xl font-normal font-['Kefa'] z-0`}>{text}</h1>
+        <h1 className={`w-auto h-16 mt-3 mb-1 text-${color} ${position} text-5xl font-normal font-['Kefa'] z-0`}>{text}</h1>
     );
 };
 

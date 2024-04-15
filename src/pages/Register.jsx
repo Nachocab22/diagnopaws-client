@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import Text from '../components/Text';
 import Link from '../components/Link';
 import FormButton from '../components/forms/FormButton';
@@ -13,6 +14,12 @@ import FormDni from "../components/forms/FormDni";
 import FormAddress from "../components/forms/FormAddress";
 
 const Register = () => {
+
+    const [gender, setGender] = useState('');
+
+    const handleGenderChange = (e) => {
+        setGender(e.target.value);
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,7 +37,7 @@ const Register = () => {
                     <FormText label="Nombre" placeholder="Nombre"/>
                     <FormText label="Apellidos" placeholder="Apellidos"/>
                     <FormDate label="Fecha de nacimiento"/>
-                    <FormSelect label="Género" options={["Seleccione una opción", "Hombre", "Mujer", "Otro"]}/>
+                    <FormSelect label="Género" options={["Seleccione una opción", "Hombre", "Mujer", "Otro"]} value={gender} onChange={handleGenderChange}/>
                     <FormDni/>
                     <FormPhone/>
                     <div className="col-span-2">
@@ -51,7 +58,7 @@ const Register = () => {
                 <div className="p-5 w-full h-auto bg-zinc-300 rounded-lg">
                     <div className="justify-center text-center">
                         <span><Text text="¿Ya tienes una cuenta?"/></span> 
-                        <span><Link text=" Inicia sesión" href="/login"/></span>
+                        <span><Link text=" Inicia sesión" href="/login" color="gray-100"/></span>
                     </div>
                 </div>
             </div>
