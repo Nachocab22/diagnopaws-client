@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const FormSelect = ({ label, options, value, onChange =() => {} }) => {
+const FormSelect = ({ label, options = [], value, onChange =() => {} }) => {
     return (
         <div className="p-2 flex-col justify-start items-start gap-0.5">
             <label className="content-stretch text-slate-700 text-base font-normal font-['IBM Plex Sans'] leading-normal tracking-tight">{label}</label>
@@ -28,7 +28,10 @@ const FormSelect = ({ label, options, value, onChange =() => {} }) => {
 
 FormSelect.propTypes = {
     label: PropTypes.string.isRequired,
-    options: PropTypes.array.isRequired,
+    options: PropTypes.arrayOf(PropTypes.shape({
+        label: PropTypes.string.isRequired,
+        value: PropTypes.string.isRequired,
+    })),
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func,
 };
