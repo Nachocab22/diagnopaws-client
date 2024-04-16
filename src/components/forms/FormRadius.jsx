@@ -5,20 +5,20 @@ const RadioGroup = ({ label, options, value, onChange }) => {
     return (
         <div className="p-4">
             {label && (
-                <p className="mb-2 text-lg font-semibold text-slate-700">{label}</p>
+                <p className="content-stretch text-slate-700 text-base font-normal font-['IBM Plex Sans'] leading-normal tracking-tight">{label}</p>
             )}
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 p-2">
                 {options.map((option) => (
-                    <label key={option.value} className="flex items-center gap-2">
+                    <label key={option.value} className="flex items-center gap-2 cursor-pointer">
                         <input
                             type="radio"
                             name={label}
                             value={option.value}
                             checked={value === option.value}
                             onChange={onChange}
-                            className="w-4 h-4 text-blue-600 focus:ring-blue-500 border-gray-300"
+                            className='h-6 w-6'
                         />
-                        <span className="text-sm text-slate-600">{option.label}</span>
+                        <span className="text-medium text-slate-700">{option.label}</span>
                     </label>
                 ))}
             </div>

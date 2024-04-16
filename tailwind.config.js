@@ -8,10 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: [
-          '"IBM Plex Sans"', 
-        ]
-      },
+        'body' : ['IBM Plex Sans', 'sans-serif']
+      }
     },
   },
   plugins: [],
