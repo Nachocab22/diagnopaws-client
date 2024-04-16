@@ -18,8 +18,8 @@ const Footer = () => {
                 </svg>
             </a>
             <div className="flex gap-x-10">
-                <Link text="Privacidad" color='white'/>
-                <Link text="Condiciones de uso" color='white'/>
+                <Link text="Privacidad" color='text-white'/>
+                <Link text="Condiciones de uso" color='text-white'/>
             </div>
             
         </footer>

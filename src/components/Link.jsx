@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Link = ({ text, color = "blue", href = "#" }) => {
-    const classColor = `text-${color}`;
+const Link = ({ text, color = "text-sky-600", href = "#" }) => {
     return (
             <a href={href} 
-            className={`${classColor} text-center text-base font-normal font-['IBM Plex Sans'] leading-normal tracking-tight`}
+            className={`${color} text-center text-base font-normal font-['IBM Plex Sans'] leading-normal tracking-tight`}
             
             >{text}</a>
     );

@@ -58,7 +58,7 @@ const Register = () => {
                 <div className="p-5 w-full h-auto bg-zinc-300 rounded-lg">
                     <div className="justify-center text-center">
                         <span><Text text="¿Ya tienes una cuenta?"/></span> 
-                        <span><Link text=" Inicia sesión" href="/login" color="gray-100"/></span>
+                        <span><Link text=" Inicia sesión" href="/login"/></span>
                     </div>
                 </div>
             </div>

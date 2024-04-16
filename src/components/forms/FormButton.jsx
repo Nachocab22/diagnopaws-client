@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 const FormButton = ({ text, color = "bg-slate-400 hover:bg-[#28464b] active:bg-slate-500", onClick = () => {} }) => {
     return (
-        <div className="flex">
+        <div className="flex items-center justify-center">
             <button
                 type='submit'
                 className={`w-40 h-9 rounded-lg flex justify-center items-center ${color}`}
