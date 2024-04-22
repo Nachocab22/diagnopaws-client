@@ -44,6 +44,7 @@ const Pets = () => {
             },
             image: 'https://www.santevet.es/uploads/images/es_ES/razas/gatocomuneuropeo.jpeg'
         }
+        
     ];
     
     const handleSelectedPet = (id) => {
@@ -80,17 +81,19 @@ const Pets = () => {
             <Header handleActiveProfile={handleActiveProfile} activeProfile={activeProfile}/>
             <main className='h-full p-5 pt-24 flex-grow'>
                 <Title text='Mascotas' position='ml-5'/>
-                <div className='flex'>
-                    <div className='grid grid-rows-1 md:grid-cols-1 ml-5'>
+                <div className='flex flex-col md:flex-row'>
+                    <div className='grid grid-rows-1 ml-5 md:grid-cols-1'>
                         <PetList pets={petItems} onPetClick={handleSelectedPet}/>
                     </div>
-                    <div className='w-full pl-5 md:w-7/12'>
+                    <div className={`pl-5 w-full ${activeProfile ? 'md:w-3/5' : 'md:w-full md:ml-6'}`}>
                         {selectedPet && <PetInfo pet={selectedPet} />}
                     </div>
                 </div>
-                {activeProfile && <div className='flex-none'>
-                    <Profile user={user} />
-                </div>}
+                {activeProfile && 
+                    <div className='w-2/5 flex-none'>
+                        <Profile user={user} />
+                    </div>
+                }
             </main>
             <Footer/>
         </div>

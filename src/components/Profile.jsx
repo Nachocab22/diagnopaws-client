@@ -4,7 +4,6 @@ import InfoField from "./InfoField";
 import Title from "./Title";
 import Button from "./Button";
 import SettingsButton from "./SettingsButton";
-import PetIcon from "./PetIcon";
 
 const Triangle = ({position}) => {
     return (
@@ -43,7 +42,7 @@ const Profile = ({ user }) => {
     return (
         <div>
             <Triangle position="top-20 right-12"/>
-            <div className="w-72 h-auto z-20 bg-[#7F9FB5] rounded-2xl absolute top-28 right-10 shadow-md shadow-gray-700 md:shadow-none">
+            <div className="w-72 h-auto z-20 bg-[#7F9FB5] rounded-2xl absolute top-28 right-10 shadow-md shadow-gray-700 xl:shadow-none">
                 <Title text="Perfil" position="text-center" color="white"/>
                 <div className="w-auto h-auto px-3 gap-3">
                     <InfoField label="Nombre" value={user.name} color="white"/>
