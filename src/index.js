@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import App from './App'; // Add missing import
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Pets from './pages/Pets';
+import NewPet from './pages/NewPet';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,6 +19,7 @@ root.render(
         <Route path='/login' element={<Login/>} />
         <Route path='/register' element={<Register/>} />
         <Route path='/pets' element={<Pets/>} />
+        <Route path='/pets/new' element={<NewPet/>} />
       </Routes>
     </Router>
   </React.StrictMode>
