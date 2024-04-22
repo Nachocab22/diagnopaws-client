@@ -1,16 +1,18 @@
 import React from 'react';
+import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Title from '../components/Title';
 import Footer from '../components/Footer';
-import VerticalDivider from '../components/VerticalDivider';
-import PetIcon from '../components/PetIcon';
-import PetNew from '../components/PetNew';
 import Profile from '../components/Profile';
 import PetInfo from '../components/PetInfo';
+import PetList from '../components/PetList';
 
 const Pets = () => {
     const navigate = useNavigate();
+    const [selectedPetId, setSelectedPetId] = useState(null);
+    const [activeProfile, setActiveProfile] = useState(false);
+    
     const pets = [
         {
             id: 1,
@@ -43,6 +45,21 @@ const Pets = () => {
             image: 'https://www.santevet.es/uploads/images/es_ES/razas/gatocomuneuropeo.jpeg'
         }
     ];
+    
+    const handleSelectedPet = (id) => {
+        setSelectedPetId(id);
+    };
+    
+    const handleActiveProfile = () => {
+        setActiveProfile(!activeProfile);
+    };
+
+    const petItems = pets.map(pet => ({
+        ...pet,
+        isSelected: selectedPetId === pet.id
+    }));
+
+    const selectedPet = pets.find(pet => pet.id === selectedPetId);
 
     const user = {
         name: 'Juan Pérez',
@@ -58,27 +75,22 @@ const Pets = () => {
         }
     };
 
-    const listPets = pets.map(pet =>
-        <li key={pet.id} className='flex'>
-            <PetIcon name={pet.name} image={pet.image} />
-        </li>
-    );
-
     return (
-        <div className='bg-[#fbfcfc] w-screen h-screen'>
-            <Header />
-            <main className='pt-24 h-full w-full p-5'>
-                <Title text='Mascotas' position='ml-5' />
+        <div className='bg-[#fbfcfc] flex flex-col min-h-screen'>
+            <Header handleActiveProfile={handleActiveProfile} activeProfile={activeProfile}/>
+            <main className='h-full p-5 pt-24 flex-grow'>
+                <Title text='Mascotas' position='ml-5'/>
                 <div className='flex'>
-                    <div className='grid grid-cols-1 grid-flow-row p-5'>
-                        {listPets}
-                        <PetNew />
+                    <div className='grid grid-rows-1 md:grid-cols-1 ml-5'>
+                        <PetList pets={petItems} onPetClick={handleSelectedPet}/>
                     </div>
-                    <div className='flex-col '>
-                        <PetInfo pet={pets[0]} />
+                    <div className='w-full pl-5 md:w-7/12'>
+                        {selectedPet && <PetInfo pet={selectedPet} />}
                     </div>
                 </div>
-                {/* <Profile user={user} /> */}
+                {activeProfile && <div className='flex-none'>
+                    <Profile user={user} />
+                </div>}
             </main>
             <Footer/>
         </div>
