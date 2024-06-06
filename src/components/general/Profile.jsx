@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import InfoField from "./InfoField";
+import InfoField from "../pet/InfoField";
 import Title from "./Title";
 import Button from "./Button";
-import SettingsButton from "./SettingsButton";
+import LogOut from "./LogOut";
 
 const Triangle = ({position}) => {
     return (
@@ -47,20 +47,21 @@ const Profile = ({ user }) => {
                 <div className="w-auto h-auto px-3 gap-3">
                     <InfoField label="Nombre" value={user.name} color="white"/>
                     <InfoField label="Apellidos" value={user.surname} color="white"/>
+                    <InfoField label="Género" value={user.gender.name} color="white"/>
                     <InfoField label="Correo" value={user.email} color="white"/>
                     <InfoField label="Teléfono" value={user.phone} color="white"/>
                 </div>
                 <Title text="Dirección" position="text-center" color="white"/>
                 <div className="w-auto h-auto px-3 pb-3 gap-3">
                     <InfoField label="Calle" value={user.address.street} color="white"/>
-                    <InfoField label="Piso" value={user.address.flat} color="white"/>
+                    {user.address.flat && <InfoField label="Piso" value={user.address.flat} color="white"/>}
                     <InfoField label="Número" value={user.address.number} color="white"/>
-                    <InfoField label="Ciudad" value={user.address.town} color="white"/>
-                    <InfoField label="Provincia" value={user.address.province} color="white"/>
+                    <InfoField label="Ciudad" value={user.address.town.name} color="white"/>
+                    <InfoField label="Provincia" value={user.address.town.province.name} color="white"/>
                 </div>
                 <div className="p-3 flex justify-between">
                     <Button size="h-10 w-11" color="bg-zinc-300" textColor="black" icon={penIcon}  />
-                    <SettingsButton />
+                    <LogOut />
                 </div>
             </div>
         </div>

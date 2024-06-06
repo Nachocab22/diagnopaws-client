@@ -1,10 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import Link from "./Link";
 
 const Footer = () => {
-
-    const navigate = useNavigate();
 
     return (
         <footer className="flex-none bg-slate-700 inset-x-0 bottom-0 h-14 flex items-center justify-between px-5">

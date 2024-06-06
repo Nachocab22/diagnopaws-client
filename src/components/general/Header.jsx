@@ -6,11 +6,13 @@ const Header = ({handleActiveProfile, activeProfile}) => {
     const location = useLocation();
 
     const isHomePage = location.pathname === '/pets';
+    const isMapPage = location.pathname === '/map';
 
     const homeButtonColor = isHomePage ? 'text-[#F39C12]' : 'text-black';
+    const mapButtonColor = isMapPage ? 'text-[#F39C12]' : 'text-black';
 
     return (
-        <header role="navigation" className="bg-[#fbfcfc] fixed h-24 w-full top-0 right-0 left-0 z-10 items-center">
+        <header role="navigation" className="bg-[#fbfcfc] fixed h-24 w-full top-0 right-0 left-0 z-50 items-center">
             <button 
                 onClick={() => navigate('/pets')} 
                 className={`h-16 w-16 p-5 mx-5 ${homeButtonColor}`}
