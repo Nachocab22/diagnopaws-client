@@ -49,7 +49,7 @@ const Profile = ({ user }) => {
                     <InfoField label="Apellidos" value={user.surname} color="white"/>
                     <InfoField label="Género" value={user.gender.name} color="white"/>
                     <InfoField label="Correo" value={user.email} color="white"/>
-                    <InfoField label="Teléfono" value={user.phone} color="white"/>
+                    {user.phone && <InfoField label="Teléfono" value={user.phone} color="white"/>}
                 </div>
                 <Title text="Dirección" position="text-center" color="white"/>
                 <div className="w-auto h-auto px-3 pb-3 gap-3">
