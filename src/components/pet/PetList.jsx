@@ -4,10 +4,11 @@ import PetIcon from "./PetIcon";
 import PetNew from "./PetNew";
 
 const PetList = ({ pets, onPetClick }) => {
+
     return (
-        <ul className="flex md:block">
+        <ul className="flex md:block overflow-x-auto md:overflow-y-auto h-[215px] md:h-[400px] w-full md:w-[225px] scrollbar-x-hide md:scrollbar-y-left">
             {pets.map(pet => (
-                <li key={pet.id}>
+                <li key={pet.id} className="my-2">
                     <PetIcon 
                         name={pet.name} 
                         image={pet.image}
@@ -16,7 +17,7 @@ const PetList = ({ pets, onPetClick }) => {
                     />
                 </li>
             ))}
-            <li className="-mt-5">
+            <li className="my-2">
                 <PetNew />
             </li>
         </ul>
@@ -25,7 +26,7 @@ const PetList = ({ pets, onPetClick }) => {
 
 PetList.propTypes = {
     pets: PropTypes.array.isRequired,
-    onClick: PropTypes.func.isRequired,
+    onPetClick: PropTypes.func.isRequired,
 }
 
 export default PetList;

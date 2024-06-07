@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Title from "./Title";
+import Title from "../general/Title";
 import InfoField from "./InfoField";
 
 const PetInfo = ({ pet }) => {
@@ -12,8 +12,8 @@ const PetInfo = ({ pet }) => {
                     <Title text="Información" position="text-center" color="white"/>
                     <article className="w-auto h-auto px-3 gap-3">
                         <InfoField label="Nombre" value={pet.name} color="white"/>
-                        <InfoField label="Especie" value={pet.species} color="white"/>
-                        <InfoField label="Raza" value={pet.breed} color="white"/>
+                        <InfoField label="Especie" value={pet.breed.species.name} color="white"/>
+                        <InfoField label="Raza" value={pet.breed.name} color="white"/>
                         <InfoField label="Sexo" value={pet.sex} color="white"/>
                         <InfoField label="Fecha de nacimiento" value={pet.birth_date} color="white"/>
                         <InfoField label="Color" value={pet.color} color="white"/>
@@ -22,8 +22,8 @@ const PetInfo = ({ pet }) => {
                     <Title text="Marcado" position="text-center" color="white"/>
                     <article className="w-auto h-auto px-3 pb-3 gap-3">
                         <InfoField label="Numero" value={pet.chip.number} color="white"/>
-                        <InfoField label="Fecha de marcado" value={pet.chip.mark_date} color="white"/>
-                        <InfoField label="Posición" value={pet.chip.mark_position} color="white"/>
+                        <InfoField label="Fecha de marcado" value={pet.chip.marking_date} color="white"/>
+                        <InfoField label="Posición" value={pet.chip.position} color="white"/>
                     </article>
                 </div>
                 <div className="col-span-2">
