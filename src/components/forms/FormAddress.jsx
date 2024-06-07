@@ -1,28 +1,84 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import Button from "../Button";
+import axios from "axios";
 import FormText from "./FormText";
 import FormSelect from "./FormSelect";
-const FormAddress = () => {
+import Button from "../general/Button"
+
+const FormAddress = ({onChange = () => {}}) => {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
-
     const [street, setStreet] = useState("");
-    const [number, setNumber] = useState("");
-    const [flat, setFlat] = useState("");
-    const [town, setTown] = useState("");
-    const [province, setProvince] = useState("");
-    const [address, setAddress] = useState("");
+    const [number, setNumber] = useState(null);
+    const [flat, setFlat] = useState(null);
+    const [town, setTown] = useState([]);
+    const [province, setProvince] = useState(null);
+    const [fullAddress, setFullAddress] = useState("");
+
+    //Json de la api
+    const [provinces, setProvinces] = useState([]);
+    const [towns, setTowns] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    const [filteredTowns, setFilteredTowns] = useState([]);
+
+    useEffect(() => {
+        setLoading(true);
+        const fetchLocations = async () => {
+            try {
+                const [provinceResponse, townsResponse] = await Promise.all([
+                    axios.get('/provinces'),
+                    axios.get('/towns'),
+                ]);
+                setProvinces(provinceResponse.data.data.map(province => ({ label: province.name, value: province.id })));
+                setTowns(townsResponse.data.data);
+                setError(null);
+            }catch (error) {
+                console.error("Error fetching provinces and towns", error);
+                setError("Error al cargar datos de provincias y ciudades");
+            };
+            setLoading(false);
+        };
+        fetchLocations();
+    }, []);
 
     const handleOpenModal = () => setIsModalOpen(true);
-
     const handleCloseModal = () => setIsModalOpen(false);
 
-    const handleSubmitAddress = () => {
-        const fullAddress = `${street} ${number} (${flat}), ${town}, ${province}`;
-        setAddress(fullAddress);
+    const handleProvinceChange = async (e) => {
+        const provinceId = e.target.value;
+        setProvince(provinceId);
+    
+        const townsInProvince = towns.filter(town => town.province.id == provinceId);
+        setFilteredTowns(townsInProvince.map(town => ({ label: town.name, value: town.id })));
+    };
+
+    const handleSubmitAddress = (e) => {
+        e.preventDefault();
+        const townName = towns.find(townsInfo => townsInfo.id == town).name;
+        const provinceName = provinces.find(provinceInfo => provinceInfo.value == province).label;
+
+        const addressData = {
+            street,
+            number,
+            flat: flat ? parseInt(flat, 10) : null,
+            town_id: parseInt(town, 10),
+            province_id: province
+        };
+
+        onChange(addressData);
+
+        let formatAddress = `${street} ${number}`;
+        if(flat) formatAddress += ` (Piso ${flat})`; 
+        formatAddress += `, ${townName}, ${provinceName}`;
+
+        setFullAddress(formatAddress);
         handleCloseModal();
     };
+
+    if (loading) return <p>Cargando...</p>;
+    if (error) return <p className="text-red-700">Ha ocurrido un error: {error}</p>;
 
     return (
         <div className="p-2 flex-col justify-start items-start gap-0.5">
@@ -30,7 +86,7 @@ const FormAddress = () => {
             <input 
                 type="text" 
                 className="w-full self-stretch h-12 p-3 bg-neutral-50 rounded justify-start items-start gap-2.5 flex-1" 
-                value={address}
+                value={fullAddress}
                 placeholder='Dirección'
                 readOnly
                 onClick={handleOpenModal}
@@ -42,16 +98,16 @@ const FormAddress = () => {
 
                         <h3 className="text-center mb-4">Introduce tu dirección</h3>
 
-                        <FormText label="Calle" placeholder="Calle" value={street} onChange={(e) => setStreet(e.target.value)} />
-                        <FormText label="Número" placeholder="Número" value={number} onChange={(e) => setNumber(e.target.value)} />
+                        <FormText label="Calle" placeholder="Calle" required value={street} onChange={(e) => setStreet(e.target.value)} />
+                        <FormText label="Número" placeholder="Número" required value={number} onChange={(e) => setNumber(e.target.value)} />
                         <FormText label="Piso" placeholder="Piso" value={flat} onChange={(e) => setFlat(e.target.value)}/>
-                        <FormSelect label="Ciudad" options={["Jerez", "Madrid", "Barcelona", "Sevilla", "Cádiz"]} value={town} onChange={(e) => setTown(e.target.value)}/>
-                        <FormSelect label="Provincia" options={["Cádiz", "Sevilla", "Málaga", "Huelva", "Granada"]} value={province} onChange={(e) => setProvince(e.target.value)} />
-
+                        <FormSelect label="Provincia" options={provinces} defaultOption="Indique su provincia" value={province} onChange={handleProvinceChange} />
+                        {province && (
+                            <FormSelect label="Ciudad" options={filteredTowns} defaultOption="Indique su ciudad" value={town} onChange={(e) => setTown(e.target.value)}/> 
+                        )}
                         <div className="flex justify-end mt-4">
-                            <Button text="Guardar Dirección" size='w-40 h-9' onClick={handleSubmitAddress} />
+                            <Button text="Guardar Dirección" size='w-50 h-9' onClick={handleSubmitAddress}/>
                         </div>
-                        {/* <Button text="Cerrar" size="w-40 h-9" position="absolute right-3" onClick={handleCloseModal}/> */}
                         <button className="text-red-600 absolute right-2 top-2" onClick={handleCloseModal}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
                             <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
