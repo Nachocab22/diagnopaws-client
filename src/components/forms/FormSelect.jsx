@@ -1,7 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+const FormSelect = ({ label, options, defaultOption, value, onChange =() => {} }) => {
 
-const FormSelect = ({ label, options = [], value, onChange =() => {} }) => {
     return (
         <div className="p-2 flex-col justify-start items-start gap-0.5">
             <label className={`content-stretch text-slate-700 text-base font-normal font-['IBM Plex Sans'] leading-normal tracking-tight`}>{label}</label>
@@ -9,11 +7,11 @@ const FormSelect = ({ label, options = [], value, onChange =() => {} }) => {
                 <select 
                     className="appearance-none w-full h-12 p-3 bg-neutral-50 rounded flex-col justify-start items-start gap-2.5 flex" 
                     value={value}
-                    defaultValue="Seleccionar..."
                     onChange={onChange}
                 >
+                <option key={-1} value="">{defaultOption}</option>
                 {options.map((option) => (
-                    <option key={option} value={option}>{option}</option>
+                    <option key={option.value} value={option.value}>{option.label}</option>
                 ))}
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
@@ -24,16 +22,6 @@ const FormSelect = ({ label, options = [], value, onChange =() => {} }) => {
             </div>
         </div>
     );
-};
-
-FormSelect.propTypes = {
-    label: PropTypes.string.isRequired,
-    options: PropTypes.arrayOf(PropTypes.shape({
-        label: PropTypes.string.isRequired,
-        value: PropTypes.string.isRequired,
-    })),
-    value: PropTypes.string.isRequired,
-    onChange: PropTypes.func,
 };
 
 export default FormSelect;
