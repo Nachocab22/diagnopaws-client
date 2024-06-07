@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-const FormText = ({ label, placeholder, value, onChange = () => {}}) => {
+const FormText = ({ label, placeholder, value, required = false, onChange = () => {}}) => {
 
     return (
         <div className="p-2 flex-col justify-start items-start gap-0.5">
@@ -9,6 +9,7 @@ const FormText = ({ label, placeholder, value, onChange = () => {}}) => {
             className="w-full self-stretch h-12 p-3 bg-neutral-50 rounded justify-start items-start gap-2.5" 
             placeholder={placeholder} 
             value={value}
+            required={required}
             onChange={onChange}
         />
         </div>
