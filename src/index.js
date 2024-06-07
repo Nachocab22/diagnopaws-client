@@ -1,27 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import axios from 'axios';
 import './index.css';
-import App from './App'; // Add missing import
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { UserProvider } from './contexts/UserContext';
+
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Pets from './pages/Pets';
 import NewPet from './pages/NewPet';
+import Admin from './pages/Admin';
+
+const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
-    <Router>
-      <Routes>
-        <Route path='/' element={<Home/>} />
-        <Route path='/login' element={<Login/>} />
-        <Route path='/register' element={<Register/>} />
-        <Route path='/pets' element={<Pets/>} />
-        <Route path='/pets/new' element={<NewPet/>} />
-      </Routes>
-    </Router>
+    <UserProvider>
+        <Router>
+          <Routes>
+            <Route path='/' element={<Home/>} />
+            <Route path='/login' element={<Login/>} />
+            <Route path='/register' element={<Register/>} />
+            <Route path='/pets' element={<Pets/>} />
+            <Route path='/manager' element={<Admin/>} />
+            <Route path='/pets/new' element={<NewPet/>} />
+          </Routes>
+        </Router>
+    </UserProvider>
   </React.StrictMode>
 );
 
