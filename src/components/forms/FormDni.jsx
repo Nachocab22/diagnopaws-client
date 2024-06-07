@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-const FormDni = () => {
+const FormDni = ({value, onChange}) => {
 
-    const [dni, setDni] = useState("");
+
     const [isValid, setIsValid] = useState(false);
 
     const validateDni = (dni) => {
@@ -18,7 +18,7 @@ const FormDni = () => {
 
     const handleDniChange = (e) => {
         const inputDni = e.target.value.toUpperCase();
-        setDni(inputDni);
+        onChange(inputDni);
 
         const validationResult = validateDni(inputDni);
         setIsValid(validationResult);
@@ -32,7 +32,7 @@ const FormDni = () => {
                     <input 
                         id="dniInput" 
                         type="text" 
-                        value={dni}
+                        value={value}
                         onChange={handleDniChange} 
                         className="w-full self-stretch h-12 p-3 bg-neutral-50 rounded justify-start items-start flex-1" 
                         placeholder='DNI'
@@ -44,7 +44,7 @@ const FormDni = () => {
                         </svg>
                     </div>
                 </div>
-                {!isValid && <span className="text-red-600 text-sm">El DNI no es válido</span>}
+                {!isValid && value && <span className="text-red-600 text-sm">El DNI no es válido</span>}
             </div>
         </div>
     );
