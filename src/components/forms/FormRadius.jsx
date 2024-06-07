@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const RadioGroup = ({ label, options, value, onChange }) => {
+const RadioGroup = ({ label, options, value, required, onChange }) => {
     return (
         <div className="p-4">
             {label && (
@@ -16,6 +16,7 @@ const RadioGroup = ({ label, options, value, onChange }) => {
                             value={option.value}
                             checked={value === option.value}
                             onChange={onChange}
+                            required={required}
                             className='h-6 w-6'
                         />
                         <span className="text-medium text-slate-700">{option.label}</span>
