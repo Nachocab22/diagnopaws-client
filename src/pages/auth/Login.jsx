@@ -1,13 +1,12 @@
 import React, { useState} from "react";
-import { useUser } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
-import axios from "../axiosConfig";
-import Text from '../components/general/Text';
-import Link from '../components/general/Link';
-import FormButton from '../components/forms/FormButton';
-import Title from "../components/general/Title";
-import FormPassword from "../components/forms/FormPassword";
-import FormMail from "../components/forms/FormMail";
+import axios from "../../axiosConfig";
+import Text from '../../components/general/Text';
+import Link from '../../components/general/Link';
+import FormButton from '../../components/forms/FormButton';
+import Title from "../../components/general/Title";
+import FormPassword from "../../components/forms/FormPassword";
+import FormMail from "../../components/forms/FormMail";
 
 const Login = () => {
 

@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import axios from "../axiosConfig";
+import axios from "../../axiosConfig";
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 
-import Header from '../components/general/Header';
-import Title from '../components/general/Title';
-import Footer from '../components/general/Footer';
-import Profile from '../components/general/Profile';
-import Button from '../components/admin/Button';
-import AddButton from '../components/admin/AddButton';
-import SearchBar from '../components/admin/SearchBar';
-import RolSelect from '../components/admin/RolSelect';
-import PetList from '../components/admin/PetList';
-import UserList from '../components/admin/UserList';
-import VaccineList from '../components/admin/VaccineList';
+import Header from '../../components/general/Header';
+import Title from '../../components/general/Title';
+import Footer from '../../components/general/Footer';
+import Profile from '../../components/general/Profile';
+import Button from '../../components/admin/Button';
+import AddButton from '../../components/admin/AddButton';
+import SearchBar from '../../components/admin/SearchBar';
+import RolSelect from '../../components/admin/RolSelect';
+import PetList from '../../components/admin/PetList';
+import UserList from '../../components/admin/UserList';
+import VaccineList from '../../components/admin/VaccineList';
 
 const Admin = () => {
     const navigate = useNavigate();

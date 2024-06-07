@@ -1,10 +1,9 @@
 import React, {useState} from "react";
-import { useUser } from '../contexts/UserContext';
-import Header from "../components/general/Header";
-import Title from "../components/general/Title";
-import Footer from "../components/general/Footer";
-import NewPetForm from "../components/pet/NewPetForm";
-import Profile from "../components/general/Profile";
+import Header from "../../components/general/Header";
+import Title from "../../components/general/Title";
+import Footer from "../../components/general/Footer";
+import NewPetForm from "../../components/pet/NewPetForm";
+import Profile from "../../components/general/Profile";
 
 const NewPet = () => {
     const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;

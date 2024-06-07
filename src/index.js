@@ -7,12 +7,12 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { UserProvider } from './contexts/UserContext';
 
-import Login from './pages/Login';
-import Home from './pages/Home';
-import Register from './pages/Register';
-import Pets from './pages/Pets';
-import NewPet from './pages/NewPet';
-import Admin from './pages/Admin';
+import Login from './pages/auth/Login';
+import Home from './pages/auth/Home';
+import Register from './pages/auth/Register';
+import Pets from './pages/owner/Pets';
+import NewPet from './pages/owner/NewPet';
+import Admin from './pages/admin/Admin';
 
 const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
 

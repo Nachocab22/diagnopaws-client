@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import axios from "../axiosConfig";
-import { useUser } from '../contexts/UserContext';
+import axios from "../../axiosConfig";
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 
-import Header from '../components/general/Header';
-import Title from '../components/general/Title';
-import Footer from '../components/general/Footer';
-import Profile from '../components/general/Profile';
-import PetInfo from '../components/pet/PetInfo';
-import PetList from '../components/pet/PetList';
-import Button from '../components/admin/Button';
+import Header from '../../components/general/Header';
+import Title from '../../components/general/Title';
+import Footer from '../../components/general/Footer';
+import Profile from '../../components/general/Profile';
+import PetInfo from '../../components/pet/PetInfo';
+import PetList from '../../components/pet/PetList';
+import Button from '../../components/admin/Button';
 
 const Pets = () => {
     const navigate = useNavigate();

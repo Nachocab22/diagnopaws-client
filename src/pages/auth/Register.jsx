@@ -2,21 +2,21 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { useUser } from "../contexts/UserContext";
+import { useUser } from "../../contexts/UserContext";
 
-import axios from "../axiosConfig";
-import Text from '../components/general/Text';
-import Link from '../components/general/Link';
-import FormButton from '../components/forms/FormButton';
-import FormText from '../components/forms/FormText';
-import Title from "../components/general/Title";
-import FormPassword from "../components/forms/FormPassword";
-import FormMail from "../components/forms/FormMail";
-import FormDate from "../components/forms/FormDate";
-import FormSelect from "../components/forms/FormSelect";
-import FormPhone from "../components/forms/FormPhone";
-import FormDni from "../components/forms/FormDni";
-import FormAddress from "../components/forms/FormAddress";
+import axios from "../../axiosConfig";
+import Text from '../../components/general/Text';
+import Link from '../../components/general/Link';
+import FormButton from '../../components/forms/FormButton';
+import FormText from '../../components/forms/FormText';
+import Title from "../../components/general/Title";
+import FormPassword from "../../components/forms/FormPassword";
+import FormMail from "../../components/forms/FormMail";
+import FormDate from "../../components/forms/FormDate";
+import FormSelect from "../../components/forms/FormSelect";
+import FormPhone from "../../components/forms/FormPhone";
+import FormDni from "../../components/forms/FormDni";
+import FormAddress from "../../components/forms/FormAddress";
 
 const Register = () => {
 
