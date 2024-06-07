@@ -1,29 +1,15 @@
-import React from "react";
-import {useState} from 'react';
-import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
-import Title from "../components/Title";
-import Footer from "../components/Footer";
-import NewPetForm from "../components/NewPetForm";
-import Profile from "../components/Profile";
+import React, {useState} from "react";
+import { useUser } from '../contexts/UserContext';
+import Header from "../components/general/Header";
+import Title from "../components/general/Title";
+import Footer from "../components/general/Footer";
+import NewPetForm from "../components/pet/NewPetForm";
+import Profile from "../components/general/Profile";
 
 const NewPet = () => {
+    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
 
     const [activeProfile, setActiveProfile] = useState(false);
-
-    const user = {
-        name: 'Juan Pérez',
-        surname: 'Sánchez',
-        email: 'juan@correo.es',
-        phone: '634623476',
-        address : {
-            street: 'Calle de la Rosa',
-            flat: '3º A',
-            number: '23',
-            town: 'Madrid',
-            province: 'Madrid'
-        }
-    };
 
     const handleActiveProfile = () => {
         setActiveProfile(!activeProfile);
