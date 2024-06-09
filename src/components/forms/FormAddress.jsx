@@ -1,21 +1,18 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import axios from "../../axiosConfig";
 import FormText from "./FormText";
 import FormSelect from "./FormSelect";
-import Button from "../general/Button"
+import Button from "../general/Button";
 
-const FormAddress = ({onChange = () => {}}) => {
-
+const FormAddress = ({ address = null, onChange = () => {} }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [street, setStreet] = useState("");
-    const [number, setNumber] = useState(null);
-    const [flat, setFlat] = useState(null);
-    const [town, setTown] = useState([]);
-    const [province, setProvince] = useState(null);
+    const [street, setStreet] = useState(address ? address.street : "");
+    const [number, setNumber] = useState(address ? address.number : "");
+    const [flat, setFlat] = useState(address ? address.flat : "");
+    const [town, setTown] = useState(address ? address.town.id : null);
+    const [province, setProvince] = useState(address ? address.town.province.id : null);
     const [fullAddress, setFullAddress] = useState("");
 
-    //Json de la api
     const [provinces, setProvinces] = useState([]);
     const [towns, setTowns] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -49,7 +46,7 @@ const FormAddress = ({onChange = () => {}}) => {
     const handleProvinceChange = async (e) => {
         const provinceId = e.target.value;
         setProvince(provinceId);
-    
+
         const townsInProvince = towns.filter(town => town.province.id == provinceId);
         setFilteredTowns(townsInProvince.map(town => ({ label: town.name, value: town.id })));
     };
@@ -62,7 +59,7 @@ const FormAddress = ({onChange = () => {}}) => {
         const addressData = {
             street,
             number,
-            flat: flat ? parseInt(flat, 10) : null,
+            flat: flat,
             town_id: parseInt(town, 10),
             province_id: province
         };
@@ -70,8 +67,10 @@ const FormAddress = ({onChange = () => {}}) => {
         onChange(addressData);
 
         let formatAddress = `${street} ${number}`;
-        if(flat) formatAddress += ` (Piso ${flat})`; 
-        formatAddress += `, ${townName}, ${provinceName}`;
+        if (flat) formatAddress += ` (Piso ${flat})`;
+        if (townName && provinceName) {
+            formatAddress += `, ${townName}, ${provinceName}`;
+        }
 
         setFullAddress(formatAddress);
         handleCloseModal();
@@ -100,17 +99,17 @@ const FormAddress = ({onChange = () => {}}) => {
 
                         <FormText label="Calle" placeholder="Calle" required value={street} onChange={(e) => setStreet(e.target.value)} />
                         <FormText label="Número" placeholder="Número" required value={number} onChange={(e) => setNumber(e.target.value)} />
-                        <FormText label="Piso" placeholder="Piso" value={flat} onChange={(e) => setFlat(e.target.value)}/>
+                        <FormText label="Piso" placeholder="Piso" value={flat} onChange={(e) => setFlat(e.target.value)} />
                         <FormSelect label="Provincia" options={provinces} defaultOption="Indique su provincia" value={province} onChange={handleProvinceChange} />
                         {province && (
-                            <FormSelect label="Ciudad" options={filteredTowns} defaultOption="Indique su ciudad" value={town} onChange={(e) => setTown(e.target.value)}/> 
+                            <FormSelect label="Ciudad" options={filteredTowns} defaultOption="Indique su ciudad" value={town} onChange={(e) => setTown(e.target.value)} />
                         )}
                         <div className="flex justify-end mt-4">
-                            <Button text="Guardar Dirección" size='w-50 h-9' onClick={handleSubmitAddress}/>
+                            <Button text="Guardar Dirección" size='w-50 h-9' onClick={handleSubmitAddress} />
                         </div>
                         <button className="text-red-600 absolute right-2 top-2" onClick={handleCloseModal}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                             </svg>
                         </button>
                     </div>
