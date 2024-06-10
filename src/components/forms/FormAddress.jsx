@@ -4,13 +4,13 @@ import FormText from "./FormText";
 import FormSelect from "./FormSelect";
 import Button from "../general/Button";
 
-const FormAddress = ({ address = null, onChange = () => {} }) => {
+const FormAddress = ({ address = {}, onChange = () => {} }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [street, setStreet] = useState(address ? address.street : "");
-    const [number, setNumber] = useState(address ? address.number : "");
-    const [flat, setFlat] = useState(address ? address.flat : "");
-    const [town, setTown] = useState(address ? address.town.id : null);
-    const [province, setProvince] = useState(address ? address.town.province.id : null);
+    const [street, setStreet] = useState(address.street || "");
+    const [number, setNumber] = useState(address.number || "");
+    const [flat, setFlat] = useState(address.flat || "");
+    const [town, setTown] = useState(address.town?.id || null);
+    const [province, setProvince] = useState(address.town?.province?.id || null);
     const [fullAddress, setFullAddress] = useState("");
 
     const [provinces, setProvinces] = useState([]);
@@ -32,16 +32,16 @@ const FormAddress = ({ address = null, onChange = () => {} }) => {
                 setTowns(townsResponse.data.data);
                 setError(null);
 
-                if (address) {
-                    const townsInProvince = townsResponse.data.data.filter(town => town.province.id == address.town.province.id);
+                if (address.town && address.town.province) {
+                    const townsInProvince = townsResponse.data.data.filter(town => town.province.id === address.town.province.id);
                     setFilteredTowns(townsInProvince.map(town => ({ label: town.name, value: town.id })));
-                    setFullAddress(`${address.street} ${address.number}${address.flat ? ` (Piso ${address.flat})` : ''}, ${address.town.name}, ${address.town.province.name}`);
+                    const initialFullAddress = `${address.street} ${address.number}${address.flat ? ` (Piso ${address.flat})` : ''}, ${address.town.name}, ${address.town.province.name}`;
+                    setFullAddress(initialFullAddress);
                 }
-                
-            }catch (error) {
+            } catch (error) {
                 console.error("Error fetching provinces and towns", error);
                 setError("Error al cargar datos de provincias y ciudades");
-            };
+            }
             setLoading(false);
         };
         fetchLocations();
@@ -54,21 +54,57 @@ const FormAddress = ({ address = null, onChange = () => {} }) => {
         const provinceId = e.target.value;
         setProvince(provinceId);
 
-        const townsInProvince = towns.filter(town => town.province.id == provinceId);
+        const townsInProvince = towns.filter(town => town.province.id === parseInt(provinceId, 10));
         setFilteredTowns(townsInProvince.map(town => ({ label: town.name, value: town.id })));
+        onChange({
+            ...address,
+            town: {
+                ...address.town,
+                province: { id: provinceId }
+            }
+        });
+    };
+
+    const handleTownChange = (e) => {
+        const townId = e.target.value;
+        setTown(townId);
+        onChange({
+            ...address,
+            town: {
+                ...address.town,
+                id: townId
+            }
+        });
+    };
+
+    const handleStreetChange = (e) => {
+        const newStreet = e.target.value;
+        setStreet(newStreet);
+        onChange({ ...address, street: newStreet });
+    };
+
+    const handleNumberChange = (e) => {
+        const newNumber = e.target.value;
+        setNumber(newNumber);
+        onChange({ ...address, number: newNumber });
+    };
+
+    const handleFlatChange = (e) => {
+        const newFlat = e.target.value;
+        setFlat(newFlat);
+        onChange({ ...address, flat: newFlat });
     };
 
     const handleSubmitAddress = (e) => {
         e.preventDefault();
-        const townName = towns.find(townsInfo => townsInfo.id == town).name;
-        const provinceName = provinces.find(provinceInfo => provinceInfo.value == province).label;
+        const townName = towns.find(townsInfo => townsInfo.id === parseInt(town, 10))?.name || '';
+        const provinceName = provinces.find(provinceInfo => provinceInfo.value == province)?.label || '';
 
         const addressData = {
             street,
             number,
             flat: flat,
-            town_id: parseInt(town, 10),
-            province_id: province
+            town: { id: parseInt(town, 10), province: { id: parseInt(province, 10) } }
         };
 
         onChange(addressData);
@@ -104,12 +140,12 @@ const FormAddress = ({ address = null, onChange = () => {} }) => {
 
                         <h3 className="text-center mb-4">Introduce tu dirección</h3>
 
-                        <FormText label="Calle" placeholder="Calle" required value={street} onChange={(e) => setStreet(e.target.value)} />
-                        <FormText label="Número" placeholder="Número" required value={number} onChange={(e) => setNumber(e.target.value)} />
-                        <FormText label="Piso" placeholder="Piso" value={flat} onChange={(e) => setFlat(e.target.value)} />
+                        <FormText label="Calle" placeholder="Calle" required value={street} onChange={handleStreetChange} />
+                        <FormText label="Número" placeholder="Número" required value={number} onChange={handleNumberChange} />
+                        <FormText label="Piso" placeholder="Piso" value={flat} onChange={handleFlatChange} />
                         <FormSelect label="Provincia" options={provinces} defaultOption="Indique su provincia" value={province} onChange={handleProvinceChange} />
                         {province && (
-                            <FormSelect label="Ciudad" options={filteredTowns} defaultOption="Indique su ciudad" value={town} onChange={(e) => setTown(e.target.value)} />
+                            <FormSelect label="Ciudad" options={filteredTowns} defaultOption="Indique su ciudad" value={town} onChange={handleTownChange} />
                         )}
                         <div className="flex justify-end mt-4">
                             <Button text="Guardar Dirección" size='w-50 h-9' onClick={handleSubmitAddress} />
