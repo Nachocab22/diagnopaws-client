@@ -13,6 +13,13 @@ import Register from './pages/auth/Register';
 import Pets from './pages/owner/Pets';
 import NewPet from './pages/owner/NewPet';
 import Admin from './pages/admin/Admin';
+import AdminNewPet from './pages/admin/NewPet';
+import AdminEditPet from './pages/admin/EditPet';
+import AdminNewUser from './pages/admin/NewUser';
+import AdminEditUser from './pages/admin/EditUser';
+import AdminNewVaccine from './pages/admin/NewVaccine';
+import AdminEditVaccine from './pages/admin/EditVaccine';
+import NewVaccination from './pages/admin/AddVaccination'
 
 const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
 
@@ -26,9 +33,18 @@ root.render(
             <Route path='/' element={<Home/>} />
             <Route path='/login' element={<Login/>} />
             <Route path='/register' element={<Register/>} />
+
             <Route path='/pets' element={<Pets/>} />
-            <Route path='/manager' element={<Admin/>} />
             <Route path='/pets/new' element={<NewPet/>} />
+
+            <Route path='/manager' element={<Admin/>} />
+            <Route path='/manager/new-pet' element={<AdminNewPet/>} />
+            <Route path='/manager/edit-pet' element={<AdminEditPet/>} />
+            <Route path='/manager/new-vaccination' element={<NewVaccination/>} />
+            <Route path='/manager/new-user' element={<AdminNewUser/>} />
+            <Route path='/manager/edit-user' element={<AdminEditUser/>} />
+            <Route path='/manager/new-vaccine' element={<AdminNewVaccine/>} />
+            <Route path='/manager/edit-vaccine' element={<AdminEditVaccine/>} />
           </Routes>
         </Router>
     </UserProvider>
