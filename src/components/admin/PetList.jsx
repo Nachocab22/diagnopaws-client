@@ -2,12 +2,16 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Divider from '../general/Divider';
 
-const PetList = ({ pets, onDelete, onVaccine }) => {
+const PetList = ({ pets, onDelete }) => {
     
     const navigate = useNavigate();
 
     const handleEditPet = (pet) => {
         navigate(`/manager/edit-pet`, { state: {pet} });
+    };
+
+    const handleVaccination = (pet) => {
+        navigate(`/manager/vaccination`, { state: {pet} });
     };
 
     return (
@@ -22,7 +26,7 @@ const PetList = ({ pets, onDelete, onVaccine }) => {
                             <span className=" text-lg text-white font-normal font-['Kefa']">{pet.owner.name + ' ' + pet.owner.surname}</span>
                         </div>
                         <div className="flex items-center gap-5">
-                            <button onClick={() => onVaccine(pet)} className="stroke-white">
+                            <button onClick={() => handleVaccination(pet)} className="stroke-white">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff" fill="none" className='size-7'>
                                 <path d="M17 2C17 2.50986 17 2.76479 17.0677 3.00236C17.1049 3.13286 17.157 3.25864 17.223 3.37723C17.3431 3.59309 17.5234 3.77336 17.8839 4.13388L19.8661 6.11612C20.2266 6.47664 20.4069 6.65691 20.6228 6.77701C20.7414 6.84298 20.8671 6.89509 20.9976 6.93228C21.2352 7 21.4901 7 22 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M11.6931 7L6.76525 11.9278C5.70048 12.9926 5.1681 13.525 5.0412 14.163C4.98627 14.4391 4.98627 14.7234 5.0412 14.9996C5.1681 15.6376 5.70049 16.17 6.76525 17.2348C7.83001 18.2995 8.3624 18.8319 9.00037 18.9588" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
