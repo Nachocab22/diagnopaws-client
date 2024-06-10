@@ -45,7 +45,7 @@ const NewUserForm = () => {
                 street: addressData.street,
                 number: parseInt(addressData.number, 10),
                 flat: addressData.flat,
-                town_id: parseInt(addressData.town_id, 10),
+                town_id: parseInt(addressData.town.id, 10),
             });
 
             const addressId = addressResponse.data.address.id;

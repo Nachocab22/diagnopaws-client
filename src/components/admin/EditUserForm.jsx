@@ -6,7 +6,6 @@ import axios from "../../axiosConfig";
 
 import FormButton from '../../components/forms/FormButton';
 import FormText from '../../components/forms/FormText';
-import FormPassword from "../../components/forms/FormPassword";
 import FormMail from "../../components/forms/FormMail";
 import FormDate from "../../components/forms/FormDate";
 import FormSelect from "../../components/forms/FormSelect";
@@ -14,9 +13,9 @@ import FormPhone from "../../components/forms/FormPhone";
 import FormDni from "../../components/forms/FormDni";
 import FormAddress from "../../components/forms/FormAddress";
 
-const EditUserForm = ({user}) => {
-
+const EditUserForm = ({ user }) => {
     const navigate = useNavigate();
+    const currentUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
     const [addressData, setAddressData] = useState(user.address || {});
 
     const [name, setName] = useState(user.name);
@@ -39,7 +38,7 @@ const EditUserForm = ({user}) => {
         setLoading(true);
         setError(null);
 
-        try{
+        try {
             const addressResponse = await axios.post('/addresses', {
                 street: addressData.street,
                 number: parseInt(addressData.number, 10),
@@ -59,14 +58,17 @@ const EditUserForm = ({user}) => {
                 gender_id: gender,
                 address_id: addressId,
             });
-            
-            if(userResponse.status === 200) {
-                toast.success("Usuario actualizado correctamente!", {theme: "colored", autoClose: 2000});
+
+            if (userResponse.status === 200) {
+                if (currentUser.id === user.id) {
+                    localStorage.setItem('user', JSON.stringify(userResponse.data.user));
+                }
+                toast.success("Usuario actualizado correctamente!", { theme: "colored", autoClose: 2000 });
                 setTimeout(() => {
                     navigate('/manager');
                 }, 3000);
             }
-        }catch (error) {
+        } catch (error) {
             if (error?.response?.data?.errors) {
                 setError(Object.values(error.response.data.errors).flat());
             } else {
@@ -93,10 +95,10 @@ const EditUserForm = ({user}) => {
 
     return (
         <div className="bg-[#7F9FB5] rounded-2xl place-self-center grid gap-4 p-3">
-            <ToastContainer/>
+            <ToastContainer />
             <form onSubmit={handleSubmit} className="p-3 bg-[#7F9FB5] rounded-2xl grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FormText 
-                    label="Nombre" 
+                <FormText
+                    label="Nombre"
                     placeholder="Nombre"
                     value={name}
                     required
@@ -109,37 +111,37 @@ const EditUserForm = ({user}) => {
                     required
                     onChange={(e) => setLastName(e.target.value)}
                 />
-                <FormDate 
+                <FormDate
                     label="Fecha de nacimiento"
                     value={birthDate}
-                    onChange={(e) => setBirthDate(e.target.value)}    
+                    onChange={(e) => setBirthDate(e.target.value)}
                 />
-                <FormSelect 
-                    label="Género" 
-                    options={genders} 
+                <FormSelect
+                    label="Género"
+                    options={genders}
                     defaultOption={'Seleccione su género'}
-                    value={gender} 
+                    value={gender}
                     onChange={(e) => setGender(e.target.value)}
                 />
-                <FormDni 
+                <FormDni
                     value={dni}
-                    onChange={setDni}    
+                    onChange={setDni}
                 />
                 <FormPhone
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                 />
                 <div className="col-span-2">
-                    <FormAddress address={addressData} onChange={setAddressData}/>
+                    <FormAddress address={addressData} onChange={setAddressData} />
                 </div>
-                <FormMail 
-                    label="Correo electrónico" 
+                <FormMail
+                    label="Correo electrónico"
                     placeholder="Correo electrónico"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
                 <div className="mt-5 w-full flex justify-center">
-                    <FormButton text="Guardar" color="text-white bg-blue-700 hover:bg-blue-600 active:bg-blue-900"/>
+                    <FormButton text="Guardar" color="text-white bg-blue-700 hover:bg-blue-600 active:bg-blue-900" />
                     {error && <p className="text-red-600">{error}</p>}
                 </div>
             </form>
