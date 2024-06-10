@@ -26,7 +26,7 @@ const EditUser = () => {
             <Header handleActiveProfile={handleActiveProfile} activeProfile={activeProfile}/>
             <ToastContainer />
             <main className="pt-24 pb-14 flex-grow">
-                <Title text="Nuevo usuario" position='ml-5'/>
+                <Title text="Editar usuario" position='ml-5'/>
                 <div className="flex">
                     <div className="w-full sm:w-9/12 pl-5">
                         <EditUserForm user={user}/>
