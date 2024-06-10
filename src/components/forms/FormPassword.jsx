@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Link from '../general/Link';
 
-const FormPassword = ({value, onChange}) => {
+const FormPassword = ({value, onChange, linkColor = "text-sky-600"}) => {
     const [showPassword, setShowPassword] = useState(false);
 
     return (
@@ -33,7 +33,7 @@ const FormPassword = ({value, onChange}) => {
                     )}
                 </button>
             </div>
-            <Link text="¿Ha olvidado su contraseña?" href="/recover-password"/>
+            <Link text="¿Ha olvidado su contraseña?" href="/recover-password" color={linkColor}/>
         </div>
     );
 };
