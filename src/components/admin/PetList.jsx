@@ -1,8 +1,15 @@
 import React from 'react';
-import InfoField from '../pet/InfoField';
+import { useNavigate } from 'react-router-dom';
 import Divider from '../general/Divider';
 
-const PetList = ({ pets, onEdit, onDelete, onVaccine }) => {
+const PetList = ({ pets, onDelete, onVaccine }) => {
+    
+    const navigate = useNavigate();
+
+    const handleEditPet = (pet) => {
+        navigate(`/manager/edit-pet`, { state: {pet} });
+    };
+
     return (
         <>
             {pets.map(pet => (
@@ -12,7 +19,7 @@ const PetList = ({ pets, onEdit, onDelete, onVaccine }) => {
                         <span className="pl-5 text-2xl text-white font-semibold font-['Kefa']">{pet.name}</span>
                         <div>
                             <span className="text-xl text-white font-bold font-['Kefa']">Dueño: </span>
-                            <span className=" text-lg text-white font-normal font-['Kefa']">{pet.owner}</span>
+                            <span className=" text-lg text-white font-normal font-['Kefa']">{pet.owner.name + ' ' + pet.owner.surname}</span>
                         </div>
                         <div className="flex items-center gap-5">
                             <button onClick={() => onVaccine(pet)} className="stroke-white">
@@ -26,7 +33,7 @@ const PetList = ({ pets, onEdit, onDelete, onVaccine }) => {
                                 <path d="M13.4 18L13.9806 18.5806C14.2702 18.8702 14.415 19.015 14.5912 19.007C14.7675 18.999 14.8986 18.8417 15.1608 18.527L16.6 16.8M19 18C19 20.2091 17.2091 22 15 22C12.7909 22 11 20.2091 11 18C11 15.7909 12.7909 14 15 14C17.2091 14 19 15.7909 19 18Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                             </button>
-                            <button onClick={() => onEdit(pet)} className="text-white">
+                            <button onClick={() => handleEditPet(pet)} className="text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="size-7">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
                             </svg>
