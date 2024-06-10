@@ -31,6 +31,13 @@ const FormAddress = ({ address = null, onChange = () => {} }) => {
                 setProvinces(provinceResponse.data.data.map(province => ({ label: province.name, value: province.id })));
                 setTowns(townsResponse.data.data);
                 setError(null);
+
+                if (address) {
+                    const townsInProvince = townsResponse.data.data.filter(town => town.province.id == address.town.province.id);
+                    setFilteredTowns(townsInProvince.map(town => ({ label: town.name, value: town.id })));
+                    setFullAddress(`${address.street} ${address.number}${address.flat ? ` (Piso ${address.flat})` : ''}, ${address.town.name}, ${address.town.province.name}`);
+                }
+                
             }catch (error) {
                 console.error("Error fetching provinces and towns", error);
                 setError("Error al cargar datos de provincias y ciudades");
