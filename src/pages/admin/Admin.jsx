@@ -7,10 +7,8 @@ import Header from '../../components/general/Header';
 import Title from '../../components/general/Title';
 import Footer from '../../components/general/Footer';
 import Profile from '../../components/general/Profile';
-import Button from '../../components/admin/Button';
 import AddButton from '../../components/admin/AddButton';
 import SearchBar from '../../components/admin/SearchBar';
-import RolSelect from '../../components/admin/RolSelect';
 import PetList from '../../components/admin/PetList';
 import UserList from '../../components/admin/UserList';
 import VaccineList from '../../components/admin/VaccineList';
@@ -18,6 +16,8 @@ import VaccineList from '../../components/admin/VaccineList';
 const Admin = () => {
     const navigate = useNavigate();
     const currentUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+
+    currentUser.role.includes('owner') && navigate('/pets');
     const [activeProfile, setActiveProfile] = useState(false);
     const [search, setSearch] = useState('');
 
@@ -117,7 +117,7 @@ const Admin = () => {
             const response = await axios.delete(`/pets/${pet.id}`);
             if(response.status === 200){
                 setPets(pets.filter(p => p.id !== pet.id));
-                toast.success('Mascota eliminada correctamente');
+                toast.success('Mascota eliminada correctamente', {theme: "colored", autoClose: 3000});
             } else {
                 console.error('Error deleting pet', response);
                 toast.error('Error eliminando mascota');
@@ -133,7 +133,7 @@ const Admin = () => {
             const response = await axios.delete(`/users/${user.id}`);
             if(response.status === 200){
                 setUsers(users.filter(u => u.id !== user.id));
-                toast.success('Usuario eliminado correctamente');
+                toast.success('Usuario eliminado correctamente', {theme: "colored", autoClose: 3000});
             } else {
                 console.error('Error deleting user', response);
                 toast.error('Error eliminando usuario');
@@ -149,7 +149,7 @@ const Admin = () => {
             const response = await axios.delete(`/vaccines/${vaccine.id}`);
             if(response.status === 200){
                 setVaccines(vaccines.filter(v => v.id !== vaccine.id));
-                toast.success('Vacuna eliminada correctamente');
+                toast.success('Vacuna eliminada correctamente', {theme: "colored", autoClose: 3000});
             } else {
                 console.error('Error deleting vaccine', response);
                 toast.error('Error eliminando vacuna');
@@ -196,7 +196,7 @@ const Admin = () => {
                             <div className='flex-grow max-w-full'>
                                 <SearchBar value={search} onChange={setSearch} submit={handlePetSearch}/>
                             </div>
-                            <AddButton route='/admin/pets/new'/>
+                            <AddButton route='/manager/new-pet'/>
                         </div>
                         <PetList pets={pets} onDelete={handleDeletePet}/>
                     </div>
@@ -208,9 +208,9 @@ const Admin = () => {
                             <div className='flex-grow max-w-full'>
                                 <SearchBar value={search} onChange={setSearch} submit={handleUserSearch}/>
                             </div>
-                            <AddButton route='/admin/pets/new'/>
+                            <AddButton route='/manager/new-user'/>
                         </div>
-                        <UserList users={users} currentUser={currentUser} onDelete={handleDeleteUser}/>
+                        <UserList users={users} onDelete={handleDeleteUser}/>
                     </div>
                 }
 
@@ -220,7 +220,7 @@ const Admin = () => {
                             <div className='flex-grow max-w-full'>
                                 <SearchBar value={search} onChange={setSearch} submit={handleVaccineSearch}/>
                             </div>
-                            <AddButton route='/admin/pets/new'/>
+                            <AddButton route='/manager/new-vaccine'/>
                         </div>
                         <VaccineList vaccines={vaccines} onDelete={handleDeleteVaccine}/>
                     </div>
