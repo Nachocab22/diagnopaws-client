@@ -12,7 +12,7 @@ const PetInfo = ({ pet }) => {
     const [shownVaccinations, setShownVaccinations] = useState([]);
 
     const warningIcon = (
-        <div className='pl-1' data-tooltip-id="warning-tooltip" data-tooltip-content={`${pet.name} no se ha vacunado en la fecha prevista`}>
+        <div className='pl-1' data-tooltip-id="warning-tooltip" data-tooltip-content={`Se ha pasado la fecha de vacunación prevista de ${pet.name}`}>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
