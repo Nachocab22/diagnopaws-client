@@ -6,7 +6,7 @@ import PetNew from "./PetNew";
 const PetList = ({ pets, onPetClick }) => {
 
     return (
-        <ul className="flex md:block overflow-x-auto md:overflow-y-auto h-[215px] md:h-[400px] w-full md:w-[225px] scrollbar-x-hide md:scrollbar-y-left">
+        <ul className="flex md:block overflow-x-auto md:overflow-y-auto h-[215px] md:h-[500px] w-full md:w-[225px] scrollbar-x-hide md:scrollbar-y-left">
             {pets.map(pet => (
                 <li key={pet.id} className="my-2">
                     <PetIcon 
