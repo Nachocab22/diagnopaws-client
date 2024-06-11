@@ -28,7 +28,6 @@ const Admin = () => {
     const [selectedButton, setSelectedButton] = useState('Mascotas');
 
     useEffect(() => {
-        // Load all pets when the component mounts
         const loadAllPets = async () => {
             try {
                 const response = await axios.get(`/pets`);
