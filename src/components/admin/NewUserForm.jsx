@@ -145,7 +145,7 @@ const NewUserForm = () => {
                     linkColor="text-zinc-100"
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <div className="mt-5 w-full flex justify-center">
+                <div className="mt-5 w-full flex justify-center col-span-2">
                     <FormButton text="Guardar" color="text-white bg-blue-700 hover:bg-blue-600 active:bg-blue-900"/>
                     {error && <p className="text-red-600">{error}</p>}
                 </div>

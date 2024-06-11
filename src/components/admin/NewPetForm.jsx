@@ -163,7 +163,7 @@ const NewPetForm = () => {
                     onChange={(e) => setMarkDate(e.target.value)}
                 />
                 <FormText label="Posición del chip" placeholder="Posición del chip" value={chipPosition} onChange={(e) => setChipPosition(e.target.value)}/>
-                <div className="mt-5 w-full flex justify-center">
+                <div className="mt-5 w-full flex justify-center col-span-2">
                     {error && <p className="text-red-600">{error}</p>}
                     <FormButton text="Guardar" color="text-white bg-blue-700 hover:bg-blue-600 active:bg-blue-900"/>
                 </div>
