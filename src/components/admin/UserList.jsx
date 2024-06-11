@@ -1,7 +1,7 @@
 import axios from '../../axiosConfig';
 import { useNavigate } from 'react-router-dom';
 import RolSelect from './RolSelect';
-import Divider from '../general/Divider';
+import Divider from '../admin/Divider';
 import { useState, useEffect } from 'react';
 
 const UserList = ({ users, onEdit, onDelete}) => {
@@ -11,7 +11,6 @@ const UserList = ({ users, onEdit, onDelete}) => {
     const [selectedValue, setSelectedValue] = useState({});
 
     useEffect(() => {
-        // Inicializar selectedValue con los roles actuales de los usuarios
         const initialValues = users.reduce((acc, user) => {
             acc[user.id] = user.role;
             return acc;
@@ -25,6 +24,7 @@ const UserList = ({ users, onEdit, onDelete}) => {
             const roleResponse = await axios.put(`/user/role/${user.id}`, { role: newRole });
             if (roleResponse.status === 200) {
                 setSelectedValue(prevValues => ({ ...prevValues, [user.id]: newRole }));
+                window.location.reload();
             } else {
                 console.error('Error updating role', roleResponse);
             }

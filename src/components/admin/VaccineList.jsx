@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Divider from '../general/Divider';
+import Divider from '../admin/Divider';
 
 const VaccineList = ({ vaccines, onEdit, onDelete }) => {
     

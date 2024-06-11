@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Divider from '../general/Divider';
+import Divider from '../admin/Divider';
 
 const PetList = ({ pets, onDelete }) => {
     
@@ -11,7 +11,7 @@ const PetList = ({ pets, onDelete }) => {
     };
 
     const handleVaccination = (pet) => {
-        navigate(`/manager/vaccination`, { state: {pet} });
+        navigate(`/manager/vaccinations`, { state: {pet} });
     };
 
     return (
