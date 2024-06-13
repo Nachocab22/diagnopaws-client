@@ -20,6 +20,7 @@ import AdminEditUser from './pages/admin/EditUser';
 import AdminNewVaccine from './pages/admin/NewVaccine';
 import AdminEditVaccine from './pages/admin/EditVaccine';
 import Vaccinations from './pages/admin/Vaccinations';
+import Map from './pages/Map';
 
 const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
 
@@ -45,6 +46,8 @@ root.render(
             <Route path='/manager/new-vaccine' element={<AdminNewVaccine/>} />
             <Route path='/manager/edit-vaccine' element={<AdminEditVaccine/>} />
             <Route path='/manager/vaccinations' element={<Vaccinations/>} />
+
+            <Route path='/map' element={<Map/>} />
           </Routes>
         </Router>
     </UserProvider>
