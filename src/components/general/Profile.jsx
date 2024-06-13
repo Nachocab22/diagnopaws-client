@@ -79,7 +79,7 @@ Profile.propTypes = {
         name: PropTypes.string.isRequired,
         surname: PropTypes.string.isRequired,
         email: PropTypes.string.isRequired,
-        phone: PropTypes.string.isRequired,
+        phone: PropTypes.number,
         address: PropTypes.shape({
             street: PropTypes.string.isRequired,
             flat: PropTypes.string.isRequired,
