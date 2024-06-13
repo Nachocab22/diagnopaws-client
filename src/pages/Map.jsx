@@ -36,7 +36,7 @@ const App = () => {
             <main className="pt-24 flex-grow">
                 <Title text="Clínicas" position="ml-5" />
                 <div className="flex">
-                    <div className="w-full sm:w-9/12 pl-5">
+                    <div className="w-full lg:w-9/12 px-3 lg:pl-5 mb-4 lg:mb-0">
                         {userLocation ? (
                             <MapComponent userLocation={userLocation} />
                         ) : ( 

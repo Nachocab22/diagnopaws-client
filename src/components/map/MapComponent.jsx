@@ -40,8 +40,8 @@ const MapComponent = ({ userLocation }) => {
     };
 
     return (
-        <div className='flex flex-col lg:flex-row items-center lg:items-start p-5 bg-[#7F9FB5] rounded-2xl h-full' style={{ height: '70vh' }}>
-            <div className='w-full lg:w-2/3 h-full'>
+        <div className='flex flex-col lg:flex-row items-center lg:items-start p-5 bg-[#7F9FB5] rounded-2xl h-full lg:h-[70vh]'>
+            <div className='w-full h-96 lg:w-2/3 lg:h-full'>
                 <LoadScript googleMapsApiKey="AIzaSyALtpsxGLb7ErmFZPJjrCOI_XS4eW6BcR8" libraries={['places']}>
                     <GoogleMap
                         mapContainerStyle={{ height: '100%', width: '100%' }}
@@ -60,7 +60,7 @@ const MapComponent = ({ userLocation }) => {
                     </GoogleMap>
                 </LoadScript>
             </div>
-            <div className='mt-5 lg:mt-0 lg:ml-2 w-full lg:w-1/3 md:overflow-y-auto flex-1 h-full scrollbar-y-hide' style={{ maxHeight: '100%' }}>
+            <div className='mt-5 lg:mt-0 lg:ml-2 w-full lg:w-1/3 md:overflow-y-auto lg:flex-1 lg:h-full scrollbar-y-hide lg:max-h-full'>
                 {clinics.map(clinic => (
                     <div key={clinic.place_id} className='bg-zinc-100 rounded-md p-3 mr-1 mt-2'>
                         <p className='text-xl font-normal font-["Kefa"]'>{clinic.name}</p>
