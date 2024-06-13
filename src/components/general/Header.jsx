@@ -5,12 +5,26 @@ const Header = ({ handleActiveProfile, activeProfile }) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [home, setHome] = useState('');
+    const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
         const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
         if (user) {
             user.role.includes('owner') ? setHome('/pets') : setHome('/manager');
         }
+
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
     const handleMapClick = () => {
@@ -25,7 +39,7 @@ const Header = ({ handleActiveProfile, activeProfile }) => {
     const mapButtonColor = isMapPage ? 'text-[#F39C12]' : 'text-black';
 
     return (
-        <header role="navigation" className="bg-[#fbfcfc] fixed h-24 w-full top-0 right-0 left-0 z-50 items-center">
+        <header role="navigation" className={`bg-[#fbfcfc] fixed h-24 w-full top-0 right-0 left-0 z-50 items-center ${isScrolled ? 'shadow-md' : ''}`}>
             <button 
                 onClick={() => navigate(home)}
                 className={`h-16 w-16 p-5 mx-5 ${homeButtonColor}`}
