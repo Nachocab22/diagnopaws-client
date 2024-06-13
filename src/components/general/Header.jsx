@@ -13,6 +13,11 @@ const Header = ({ handleActiveProfile, activeProfile }) => {
         }
     }, []);
 
+    const handleMapClick = () => {
+        navigate('/map');
+        window.location.reload();
+    };
+
     const isHomePage = location.pathname === home;
     const isMapPage = location.pathname === '/map';
 
@@ -30,7 +35,7 @@ const Header = ({ handleActiveProfile, activeProfile }) => {
                 </svg>
             </button>
             <button 
-                onClick={() => navigate('/map')} 
+                onClick={handleMapClick} 
                 className={`h-16 w-16 p-5 mx-5 ${mapButtonColor}`}
             >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-14 h-14">
