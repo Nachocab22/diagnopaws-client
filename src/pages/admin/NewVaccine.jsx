@@ -22,7 +22,7 @@ const NewVaccine = () => {
             <Header handleActiveProfile={handleActiveProfile} activeProfile={activeProfile}/>
             <ToastContainer />
             <main className="pt-24 pb-14 flex-grow">
-                <Title text="Nueva vacuna" position='ml-5'/>
+                <Title text="Nuevo medicamento" position='ml-5'/>
                 <div className="flex">
                     <div className="w-full sm:w-9/12 pl-5">
                         <NewVaccineForm />

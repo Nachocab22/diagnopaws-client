@@ -183,8 +183,8 @@ const Admin = () => {
                         <span className={`text-black text-xl font-['Kefa']`}>Usuarios</span>
                     </button>
                     {currentUser.role.includes('admin') && 
-                        <button className={`p-3 w-32 h-10 ${selectedButton === 'Vacunas' ? 'bg-[#F39C12]' : 'bg-zinc-300 hover:bg-zinc-400 active:bg-zinc-200'}   rounded-3xl flex justify-center items-center`} onClick={() => handleButtonClick('Vacunas')}>
-                            <span className={`text-black text-xl font-['Kefa']`}>Vacunas</span>
+                        <button className={`p-3 w-34 h-10 ${selectedButton === 'Vacunas' ? 'bg-[#F39C12]' : 'bg-zinc-300 hover:bg-zinc-400 active:bg-zinc-200'}   rounded-3xl flex justify-center items-center`} onClick={() => handleButtonClick('Vacunas')}>
+                            <span className={`text-black text-xl font-['Kefa']`}>Medicamentos</span>
                         </button>
                     }
                 </div>
