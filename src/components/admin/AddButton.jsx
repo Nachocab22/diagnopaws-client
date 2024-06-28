@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const PetNew = ({route}) => {
+const AddButton = ({route}) => {
     
     const navigate = useNavigate();
 
@@ -20,4 +20,4 @@ const PetNew = ({route}) => {
 
 };
 
-export default PetNew;
+export default AddButton;

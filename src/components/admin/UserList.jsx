@@ -4,7 +4,7 @@ import RolSelect from './RolSelect';
 import Divider from '../admin/Divider';
 import { useState, useEffect } from 'react';
 
-const UserList = ({ users, onEdit, onDelete}) => {
+const UserList = ({ users, onDelete}) => {
     const navigate = useNavigate();
     const currentUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
 

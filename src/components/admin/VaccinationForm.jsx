@@ -48,7 +48,7 @@ const VaccinationForm = ({ pet }) => {
             const response = await axios.delete(`/vaccinations/${vaccination.id}`);
             if (response.status === 200) {
                 toast.success('Vacunación eliminada correctamente', { theme: "colored", autoClose: 3000 });
-                // Remove the deleted vaccination from the state
+
                 setVaccinations(vaccinations.filter(v => v.id !== vaccination.id));
             } else {
                 console.error('Error deleting vaccination', response);

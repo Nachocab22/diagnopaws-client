@@ -12,7 +12,7 @@ const MapComponent = ({ userLocation }) => {
 
             const request = {
                 location: new window.google.maps.LatLng(userLocation.lat, userLocation.lng),
-                radius: '1000',
+                radius: '3000',
                 type: ['veterinary_care'],
             };
 

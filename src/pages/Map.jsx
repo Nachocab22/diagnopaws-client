@@ -6,7 +6,7 @@ import Profile from "../components/general/Profile";
 import { ToastContainer } from "react-toastify";
 import MapComponent from '../components/map/MapComponent';
 
-const App = () => {
+const Map = () => {
     const [userLocation, setUserLocation] = useState(null);
     const currentUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
 
@@ -53,4 +53,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default Map;
