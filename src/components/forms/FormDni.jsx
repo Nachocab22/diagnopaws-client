@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 const FormDni = ({value, onChange}) => {
 
-
     const [isValid, setIsValid] = useState(false);
+
+    useEffect(() => {
+        setIsValid(validateDni(value));
+    }, [value]);
 
     const validateDni = (dni) => {
         if (dni.length !== 9) return false;

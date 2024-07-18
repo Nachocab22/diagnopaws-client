@@ -30,6 +30,11 @@ const PetInfo = ({ pet }) => {
         </div>
     );
 
+    const sexTraslations = {
+        Male: "Macho",
+        Female: "Hembra"
+    };
+
     useEffect(() => {
         if (pet.vaccinations) {
             const filteredVaccinations = pet.vaccinations.reduce((acc, vaccination) => {
@@ -55,7 +60,7 @@ const PetInfo = ({ pet }) => {
                     <InfoField label="Nombre" value={pet.name} color="white" />
                     <InfoField label="Especie" value={pet.breed.species.name} color="white" />
                     <InfoField label="Raza" value={pet.breed.name} color="white" />
-                    <InfoField label="Sexo" value={pet.sex} color="white" />
+                    <InfoField label="Sexo" value={sexTraslations[pet.sex] || pet.sex} color="white" />
                     <InfoField label="Fecha de nacimiento" value={moment(pet.birth_date).format('DD-MM-YYYY')} color="white" />
                     <InfoField label="Color" value={pet.color} color="white" />
                 </article>

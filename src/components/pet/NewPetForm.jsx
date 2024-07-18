@@ -123,7 +123,7 @@ const NewPetForm = () => {
     return (
         <div className="bg-[#7F9FB5] rounded-2xl place-self-center grid gap-4 p-3">
             <ToastContainer/>
-            <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-4">
                 <FormText label="Nombre" placeholder="Nombre" value={name} required onChange={(e) => {setName(e.target.value)}}/>
                 <FormSelect label="Especie" value={species} options={allSpecies} defaultOption="Indique la especie" onChange={handleSpeciesChange}/>
                 { species && <FormSelect label="Raza" value={breed} options={filteredBreeds} defaultOption="Indique la raza" onChange={(e) => setBreed(e.target.value)}/> }

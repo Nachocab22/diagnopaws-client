@@ -81,7 +81,7 @@ const Login = () => {
                             <FormButton text={loading ? "Cargando..." : "Iniciar sesión"}/>
                         </div>
                         {error && <div className="text-red-500 text-center mt-2">{error}</div>}
-                        <div className="mt-2 justify-center text-center">
+                        <div className="mt-3 justify-center text-center">
                             <span><Text text="¿No tienes cuenta?"/></span>
                             <span><Link text=" Regístrate aqui" href="/register"/></span>
                         </div>

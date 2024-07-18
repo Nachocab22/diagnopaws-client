@@ -20,7 +20,7 @@ const NewPet = () => {
             <main className="pt-24 pb-14 flex-grow">
                 <Title text="Nueva mascota" position="ml-5" />
                 <div className="flex">
-                    <div className="w-full sm:w-9/12 pl-5">
+                    <div className="w-full md:w-9/12 md:pl-5 px-5">
                         <NewPetForm/>
                     </div>
                     {activeProfile && <div>
