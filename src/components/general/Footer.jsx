@@ -1,7 +1,12 @@
 import React from "react";
 import Link from "./Link";
+import { Moon02Icon } from 'hugeicons-react';
 
 const Footer = () => {
+
+    const toggleDarkMode = () => {
+
+    };
 
     return (
         <footer className="flex-none bg-slate-700 inset-x-0 bottom-0 h-14 flex items-center justify-between px-5">
@@ -15,6 +20,7 @@ const Footer = () => {
                 </svg>
             </a>
             <div className="flex gap-x-10 flex-shrink-0">
+                <Moon02Icon size={24} color="#ffffff" variant={"stroke"} strokeWidth={2} onClick={toggleDarkMode}/>
                 <Link text="Privacidad" color='text-white'/>
                 <Link text="Condiciones de uso" color='text-white'/>
             </div>
