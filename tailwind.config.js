@@ -3,6 +3,7 @@ module.exports = {
   purge: [
     './src/**/*.{js,jsx,ts,tsx}', // Adjust the paths as needed
   ],
+  darkMode: 'class', // 'media' para seguir el estilo del sistema
   theme: {
     extend: {
       // You can extend other properties here if needed
