@@ -21,6 +21,7 @@ import AdminNewVaccine from './pages/admin/NewVaccine';
 import AdminEditVaccine from './pages/admin/EditVaccine';
 import Vaccinations from './pages/admin/Vaccinations';
 import Map from './pages/Map';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
 
@@ -28,29 +29,31 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    <UserProvider>
-        <Router>
-          <Routes>
-            <Route path='/' element={<Home/>} />
-            <Route path='/login' element={<Login/>} />
-            <Route path='/register' element={<Register/>} />
+    <ThemeProvider>
+      <UserProvider>
+          <Router>
+            <Routes>
+              <Route path='/' element={<Home/>} />
+              <Route path='/login' element={<Login/>} />
+              <Route path='/register' element={<Register/>} />
 
-            <Route path='/pets' element={<Pets/>} />
-            <Route path='/pets/new' element={<NewPet/>} />
+              <Route path='/pets' element={<Pets/>} />
+              <Route path='/pets/new' element={<NewPet/>} />
 
-            <Route path='/manager' element={<Admin/>} />
-            <Route path='/manager/new-pet' element={<AdminNewPet/>} />
-            <Route path='/manager/edit-pet' element={<AdminEditPet/>} />
-            <Route path='/manager/new-user' element={<AdminNewUser/>} />
-            <Route path='/manager/edit-user' element={<AdminEditUser/>} />
-            <Route path='/manager/new-vaccine' element={<AdminNewVaccine/>} />
-            <Route path='/manager/edit-vaccine' element={<AdminEditVaccine/>} />
-            <Route path='/manager/vaccinations' element={<Vaccinations/>} />
+              <Route path='/manager' element={<Admin/>} />
+              <Route path='/manager/new-pet' element={<AdminNewPet/>} />
+              <Route path='/manager/edit-pet' element={<AdminEditPet/>} />
+              <Route path='/manager/new-user' element={<AdminNewUser/>} />
+              <Route path='/manager/edit-user' element={<AdminEditUser/>} />
+              <Route path='/manager/new-vaccine' element={<AdminNewVaccine/>} />
+              <Route path='/manager/edit-vaccine' element={<AdminEditVaccine/>} />
+              <Route path='/manager/vaccinations' element={<Vaccinations/>} />
 
-            <Route path='/map' element={<Map/>} />
-          </Routes>
-        </Router>
-    </UserProvider>
+              <Route path='/map' element={<Map/>} />
+            </Routes>
+          </Router>
+      </UserProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 
