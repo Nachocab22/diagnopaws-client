@@ -128,7 +128,7 @@ const NewPetForm = () => {
             };
         } catch (e) { 
             if (e.response && e.response.data && e.response.data.message === "The image failed to upload.") {
-                setError("La imagen es demasiado grande. Por favor, selecciona una imagen más pequeña. (Máximo 2MB)");
+                setError("La imagen es demasiado grande. Por favor, selecciona una imagen más pequeña. (Máximo 5MB)");
             } else {
                 console.error("Error al crear la mascota: " + e);
                 setError("Error al crear la mascota");

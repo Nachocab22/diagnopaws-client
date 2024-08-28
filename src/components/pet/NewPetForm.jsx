@@ -65,16 +65,26 @@ const NewPetForm = () => {
     };
 
     const handleFileChange = (e) => {
-        setFile(e.target.files[0]);
-        if (file) {
-            // Lista de tipos de imágenes permitidos
-            const allowedTypes = ['image/jpeg', 'image/png', 'image/svg+xml'];
-            if (!allowedTypes.includes(file.type)) {
-                alert('Por favor, selecciona una imagen válida (JPEG, PNG, SVG).');
-                e.target.value = '';
-            }
+        const selectedFile = e.target.files[0];
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/svg+xml'];
+        const maxSize = 5 * 1024 * 1024;
+   
+        if (selectedFile && !allowedTypes.includes(selectedFile.type)) {
+            alert('Por favor, selecciona una imagen válida (JPEG, PNG, SVG).');
+            e.target.value = '';
+            return;
         }
+   
+        if (selectedFile && selectedFile.size > maxSize) {
+            alert('El archivo es demasiado grande. Por favor, selecciona una imagen de menos de 5MB.');
+            e.target.value = '';
+            return;
+        }
+   
+        setFile(selectedFile);
     };
+   
+   
 
     const handleSubmit = async (e) => {
         e.preventDefault();

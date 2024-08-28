@@ -113,7 +113,12 @@ const EditPetForm = ({pet}) => {
         }
 
         try {
-            const petResponse = await axios.put(`/pets/${pet.id}`, formData);
+            const petResponse = await axios.post(`/pets/${pet.id}?_method=PUT`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                },
+            });
+            console.log(petResponse);
             if(petResponse.status === 200) {
                 toast.success("¡Mascota actualizada correctamente!", {theme: "colored", autoClose: 2000});
                 
@@ -125,8 +130,8 @@ const EditPetForm = ({pet}) => {
             if (e.response && e.response.data && e.response.data.message === "The image failed to upload.") {
                 setError("La imagen es demasiado grande. Por favor, selecciona una imagen más pequeña. (Máximo 2MB)");
             } else {
-                console.error("Error al crear la mascota: " + e);
-                setError("Error al crear la mascota");
+                console.error("Error al actualizar la mascota: " + e);
+                setError("Error al actualizar la mascota");
             }
             setLoading(false);
             console.log("Error:" + error);
