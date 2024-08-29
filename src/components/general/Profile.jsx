@@ -9,7 +9,7 @@ import LogOut from "./LogOut";
 const Triangle = ({position}) => {
     return (
         <div>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" className={`w-14 h-14 absolute text-[#7F9FB5] ${position}`}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" className={`w-14 h-14 absolute text-[#7F9FB5] dark:text-[#3a4a5b] ${position}`}>
             <path
                 d="M405.5389225211667 342.2155703241949C428.59281147787243 311.9760505691493 311.07783243327606 158.53294296416888 264.52094766765106 158.08384119821835C217.96406290202606 157.63473943226782 102.69461811849742 308.8323382074957 126.19761392741668 339.5209597284918C149.70060973633596 370.2095812494879 382.48503356446093 372.4550900792405 405.5389225211667 342.2155703241949C428.59281147787243 311.9760505691493 311.07783243327606 158.53294296416888 264.52094766765106 158.08384119821835"
                 fill="currentColor"
@@ -48,7 +48,7 @@ const Profile = ({ user }) => {
     return (
         <div>
             <Triangle position="top-20 right-12"/>
-            <div className="w-72 h-auto z-20 bg-[#7F9FB5] rounded-2xl absolute top-28 right-10 shadow-md shadow-gray-700 xl:shadow-none">
+            <div className="w-72 h-auto z-20 bg-[#7F9FB5] dark:bg-[#3a4a5b] rounded-2xl absolute top-28 right-10 shadow-md shadow-gray-700 dark:shadow-gray-500 xl:shadow-none">
                 <Title text="Perfil" position="text-center" color="white"/>
                 <div className="w-auto h-auto px-3 gap-3">
                     <InfoField label="Nombre" value={user.name} color="white"/>

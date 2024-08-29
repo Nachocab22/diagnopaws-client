@@ -53,7 +53,7 @@ const PetInfo = ({ pet }) => {
     }, [pet.vaccinations]);
 
     return (
-        <div className="flex flex-col md:flex-row bg-[#7F9FB5] p-4 rounded-2xl">
+        <div className="flex flex-col md:flex-row bg-[#7F9FB5] dark:bg-[#3a4a5b] p-4 rounded-2xl">
             <div className="flex-1 mb-5">
                 <Title text="Información" position="text-left" color="white" />
                 <article className="w-auto h-auto px-3 gap-3">

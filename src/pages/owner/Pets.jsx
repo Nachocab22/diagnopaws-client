@@ -56,7 +56,7 @@ const Pets = () => {
     const selectedPet = selectedPetId ? pets.find(pet => pet.id == selectedPetId) : null;
 
     return (
-        <div className='bg-[#fbfcfc] flex flex-col min-h-screen'>
+        <div className='bg-[#fbfcfc] dark:bg-[#2C2C2C] flex flex-col min-h-screen'>
             <Header handleActiveProfile={handleActiveProfile} activeProfile={activeProfile}/>
             <ToastContainer/>
             <main className='h-full p-5 pt-24 flex-grow'>

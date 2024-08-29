@@ -35,11 +35,11 @@ const Header = ({ handleActiveProfile, activeProfile }) => {
     const isHomePage = location.pathname === home;
     const isMapPage = location.pathname === '/map';
 
-    const homeButtonColor = isHomePage ? 'text-[#F39C12]' : 'text-black';
-    const mapButtonColor = isMapPage ? 'text-[#F39C12]' : 'text-black';
+    const homeButtonColor = isHomePage ? 'text-[#F39C12]' : 'text-black dark:text-white';
+    const mapButtonColor = isMapPage ? 'text-[#F39C12]' : 'text-black dark:text-white';
 
     return (
-        <header role="navigation" className={`bg-[#fbfcfc] fixed h-24 w-full top-0 right-0 left-0 z-50 items-center ${isScrolled ? 'shadow-md' : ''}`}>
+        <nav role="navigation" className={`bg-[#fbfcfc] dark:bg-[#2c2c2c] fixed h-24 w-full top-0 right-0 left-0 z-50 items-center ${isScrolled ? 'shadow-md dark:shadow-gray-500' : ''}`}>
             <button 
                 onClick={() => navigate(home)}
                 className={`h-16 w-16 p-5 mx-5 ${homeButtonColor}`}
@@ -60,13 +60,13 @@ const Header = ({ handleActiveProfile, activeProfile }) => {
             {/*Boton de perfil*/}
             <button
                 onClick={handleActiveProfile}
-                className={`h-16 w-16 p-5 mx-5 absolute right-10 ${activeProfile ? 'text-[#F39C12]' : 'text-black'}`}
+                className={`h-16 w-16 p-5 mx-5 absolute right-10 ${activeProfile ? 'text-[#F39C12]' : 'text-black dark:text-white'}`}
             >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-14 h-14">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                 </svg>
             </button>
-        </header>
+        </nav>
     );
 };
 

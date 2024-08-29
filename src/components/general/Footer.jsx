@@ -9,7 +9,7 @@ const Footer = () => {
     const { theme, toggleTheme } = useTheme();
 
     return (
-        <footer className="flex-none bg-slate-700 inset-x-0 bottom-0 h-14 flex items-center justify-between px-5">
+        <footer className="flex-none bg-slate-700 dark:bg-[#1c3235] inset-x-0 bottom-0 h-14 flex items-center justify-between px-5">
             <a
                 href="https://twitter.com"
                 target="_blank"
