@@ -40,7 +40,7 @@ const MapComponent = ({ userLocation }) => {
     };
 
     return (
-        <div className='flex flex-col lg:flex-row items-center lg:items-start p-5 bg-[#7F9FB5] rounded-2xl h-full lg:h-[70vh]'>
+        <div className='flex flex-col lg:flex-row items-center lg:items-start p-5 bg-[#7F9FB5] dark:bg-[#3a4a5b] rounded-2xl h-full lg:h-[70vh]'>
             <div className='w-full h-96 lg:w-2/3 lg:h-full'>
                 <LoadScript googleMapsApiKey="AIzaSyALtpsxGLb7ErmFZPJjrCOI_XS4eW6BcR8" libraries={['places']}>
                     <GoogleMap
@@ -62,17 +62,17 @@ const MapComponent = ({ userLocation }) => {
             </div>
             <div className='mt-5 lg:mt-0 lg:ml-2 w-full lg:w-1/3 md:overflow-y-auto lg:flex-1 lg:h-full scrollbar-y-hide lg:max-h-full'>
                 {clinics.map(clinic => (
-                    <div key={clinic.place_id} className='bg-zinc-100 rounded-md p-3 mr-1 mt-2'>
-                        <p className='text-xl font-normal font-["Kefa"]'>{clinic.name}</p>
-                        <p className='text-base font-normal font-["Kefa"] pl-3'>{clinic.vicinity}</p>
-                        <p className={`text-base font-['Kefa'] pl-3 ${clinic.opening_hours?.open_now ? "text-green-600" : "text-red-600"}`}>
+                    <div key={clinic.place_id} className='bg-zinc-100 dark:bg-slate-500 rounded-md p-3 mr-1 mt-2'>
+                        <p className='text-xl font-normal font-["Kefa"] dark:text-white'>{clinic.name}</p>
+                        <p className='text-base font-normal font-["Kefa"] pl-3 dark:text-white'>{clinic.vicinity}</p>
+                        <p className={`text-base font-['Kefa'] pl-3 ${clinic.opening_hours?.open_now ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}>
                             {clinic.opening_hours?.open_now ? " Abierto" : " Cerrado"}
                         </p>
                         {clinic.rating ? (
                             <div className='ml-10 flex justify-start'>
-                                <span className='mr-3 text-base font-normal font-["Kefa"]'>{clinic.rating}</span>
+                                <span className='mr-3 text-base font-normal font-["Kefa"] dark:text-white'>{clinic.rating}</span>
                                 <StarRating rating={clinic.rating} />
-                                <span className='ml-3 text-sm font-normal font-["Kefa"] text-gray-400'>({clinic.user_ratings_total})</span>
+                                <span className='ml-3 text-sm font-normal font-["Kefa"] text-gray-400 dark:text-gray-200'>({clinic.user_ratings_total})</span>
                             </div>
                         ) : (
                             <p className='ml-10 text-lg font-normal font-["Kefa"] text-gray-400'>Sin calificación</p>
