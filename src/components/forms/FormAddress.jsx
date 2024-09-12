@@ -136,7 +136,7 @@ const FormAddress = ({ address = {}, onChange = () => {} }) => {
 
             {isModalOpen && (
                 <div className="fixed z-50 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center">
-                    <div className="relative p-5 border w-96 shadow-lg rounded-md bg-white max-w-md mx-auto my-auto">
+                    <div className="relative p-5 border w-96 shadow-lg rounded-md dark:bg-[#2c2c2c] dark:border-none bg-white max-w-md mx-auto my-auto">
 
                         <h3 className="text-center mb-4">Introduce tu dirección</h3>
 

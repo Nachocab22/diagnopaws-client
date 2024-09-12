@@ -15,7 +15,7 @@ const SearchBar = ({value, onChange, submit}) => {
                 placeholder="Buscar..."
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
-                className="w-full h-full rounded-full shadow-sm bg-zinc-100 shadow-gray-700 px-6 text-3xl font-['Kefa'] pr-12" 
+                className="w-full h-full rounded-full shadow-sm bg-zinc-100 dark:bg-[#8c8c8c] shadow-gray-600 px-6 text-3xl font-['Kefa'] pr-12" 
             />
             <button
                 type="submit"

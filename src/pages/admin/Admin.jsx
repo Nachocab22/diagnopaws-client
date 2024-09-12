@@ -168,7 +168,7 @@ const Admin = () => {
     };
 
     return (
-        <div className='bg-[#fbfcfc] flex flex-col min-h-screen'>
+        <div className='bg-[#fbfcfc] dark:bg-[#2c2c2c] flex flex-col min-h-screen'>
             <Header handleActiveProfile={handleActiveProfile} activeProfile={activeProfile}/>
             <ToastContainer/>
             <main className='h-full p-5 pt-24 flex-grow'>
@@ -176,21 +176,21 @@ const Admin = () => {
                 {currentUser.role.includes('vet') && <Title text='Veterinario' position='ml-5'/>}
 
                 <div className='flex pb-3 gap-5 justify-center md:justify-start md:pl-14 items-center'>
-                    <button className={`p-3 w-32 h-10 ${selectedButton === 'Mascotas' ? 'bg-[#F39C12]' : 'bg-zinc-300 hover:bg-zinc-400 active:bg-zinc-200'}   rounded-3xl flex justify-center items-center`} onClick={() => handleButtonClick('Mascotas')}>
-                        <span className={`text-black text-xl font-['Kefa']`}>Mascotas</span>
+                    <button className={`p-3 w-32 h-10 ${selectedButton === 'Mascotas' ? 'bg-[#F39C12]' : 'bg-zinc-300 dark:bg-[#8c8c8c] hover:bg-zinc-400 active:bg-zinc-200'}   rounded-3xl flex justify-center items-center`} onClick={() => handleButtonClick('Mascotas')}>
+                        <span className={`text-black dark:text-white text-xl font-['Kefa']`}>Mascotas</span>
                     </button>
-                    <button className={`p-3 w-32 h-10 ${selectedButton === 'Usuarios' ? 'bg-[#F39C12]' : 'bg-zinc-300 hover:bg-zinc-400 active:bg-zinc-200'}   rounded-3xl flex justify-center items-center`} onClick={() => handleButtonClick('Usuarios')}>
-                        <span className={`text-black text-xl font-['Kefa']`}>Usuarios</span>
+                    <button className={`p-3 w-32 h-10 ${selectedButton === 'Usuarios' ? 'bg-[#F39C12]' : 'bg-zinc-300 dark:bg-[#8c8c8c] hover:bg-zinc-400 active:bg-zinc-200'}   rounded-3xl flex justify-center items-center`} onClick={() => handleButtonClick('Usuarios')}>
+                        <span className={`text-black dark:text-white text-xl font-['Kefa']`}>Usuarios</span>
                     </button>
                     {currentUser.role.includes('admin') && 
-                        <button className={`p-3 w-34 h-10 ${selectedButton === 'Vacunas' ? 'bg-[#F39C12]' : 'bg-zinc-300 hover:bg-zinc-400 active:bg-zinc-200'}   rounded-3xl flex justify-center items-center`} onClick={() => handleButtonClick('Vacunas')}>
-                            <span className={`text-black text-xl font-['Kefa']`}>Medicamentos</span>
+                        <button className={`p-3 w-34 h-10 ${selectedButton === 'Vacunas' ? 'bg-[#F39C12]' : 'bg-zinc-300 dark:bg-[#8c8c8c] hover:bg-zinc-400 active:bg-zinc-200'}   rounded-3xl flex justify-center items-center`} onClick={() => handleButtonClick('Vacunas')}>
+                            <span className={`text-black dark:text-white text-xl font-['Kefa']`}>Medicamentos</span>
                         </button>
                     }
                 </div>
 
                 {selectedButton === 'Mascotas' && 
-                    <div className='grid grid-flow-row grid-cols-1 min-h-full p-5 gap-5 rounded-xl bg-[#7F9FB5] justify-center items-center md:w-9/12'>
+                    <div className='grid grid-flow-row grid-cols-1 min-h-full p-5 gap-5 rounded-xl bg-[#7F9FB5] dark:bg-[#3a4a5b] justify-center items-center md:w-9/12'>
                         <div className='flex gap-3 max-w-full'>
                             <div className='flex-grow max-w-full'>
                                 <SearchBar value={search} onChange={setSearch} submit={handlePetSearch}/>
@@ -202,7 +202,7 @@ const Admin = () => {
                 }
 
                 {selectedButton === 'Usuarios' && 
-                    <div className='grid grid-flow-row grid-cols-1 min-h-full p-5 gap-5 rounded-xl bg-[#7F9FB5] justify-center items-center md:w-9/12'>
+                    <div className='grid grid-flow-row grid-cols-1 min-h-full p-5 gap-5 rounded-xl bg-[#7F9FB5] dark:bg-[#3a4a5b]  justify-center items-center md:w-9/12'>
                         <div className='flex gap-3 max-w-full'>
                             <div className='flex-grow max-w-full'>
                                 <SearchBar value={search} onChange={setSearch} submit={handleUserSearch}/>
@@ -214,7 +214,7 @@ const Admin = () => {
                 }
 
                 {selectedButton === 'Vacunas' && 
-                    <div className='grid grid-flow-row grid-cols-1 min-h-full p-5 gap-5 rounded-xl bg-[#7F9FB5] justify-center items-center md:w-9/12'>
+                    <div className='grid grid-flow-row grid-cols-1 min-h-full p-5 gap-5 rounded-xl bg-[#7F9FB5] dark:bg-[#3a4a5b]  justify-center items-center md:w-9/12'>
                         <div className='flex gap-3 max-w-full'>
                             <div className='flex-grow max-w-full'>
                                 <SearchBar value={search} onChange={setSearch} submit={handleVaccineSearch}/>

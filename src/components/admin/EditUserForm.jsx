@@ -94,7 +94,7 @@ const EditUserForm = ({ user }) => {
     }, []);
 
     return (
-        <div className="bg-[#7F9FB5] rounded-2xl place-self-center grid gap-4 p-3">
+        <div className="bg-[#7F9FB5] dark:bg-[#3a4a5b] rounded-2xl place-self-center grid gap-4 p-3">
             <ToastContainer />
             <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-4">
                 <FormText

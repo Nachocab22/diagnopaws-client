@@ -6,7 +6,7 @@ const FormPassword = ({value, onChange, linkColor = "text-sky-600"}) => {
 
     return (
         <div className={`p-2 flex-col justify-start items-start gap-0.5`}>
-            <label htmlFor="password" className="content-stretch text-slate-700 text-base font-normal font-['IBM Plex Sans'] leading-normal tracking-tight">Contraseña</label>
+            <label htmlFor="password" className="content-stretch text-slate-700 dark:text-zinc-200 text-base font-normal font-['IBM Plex Sans'] leading-normal tracking-tight">Contraseña</label>
             <div className="w-full self-stretch h-12 p-3 bg-neutral-50 rounded justify-start items-start gap-2.5 flex-1 relative">
                 <input
                     type={showPassword ? "text" : "password"}

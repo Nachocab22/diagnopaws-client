@@ -3,7 +3,7 @@ const FormPhone = ({value, onChange}) => {
 
     return (
         <div className="p-2 flex-col justify-start items-start gap-0.5">
-            <label htmlFor="phone" className="content-stretch text-slate-700 text-base font-normal font-['IBM Plex Sans'] leading-normal tracking-tight">Teléfono</label>
+            <label htmlFor="phone" className="content-stretch text-slate-700 dark:text-zinc-200 text-base font-normal font-['IBM Plex Sans'] leading-normal tracking-tight">Teléfono</label>
             <div className="relative w-full">
                 <input 
                     id="phone" 

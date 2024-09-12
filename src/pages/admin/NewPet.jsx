@@ -16,7 +16,7 @@ const NewPet = () => {
     };
 
     return (
-        <div className='bg-[#fbfcfc] flex flex-col min-h-screen'>
+        <div className='bg-[#fbfcfc] dark:bg-[#2c2c2c] flex flex-col min-h-screen'>
             <Header handleActiveProfile={handleActiveProfile} activeProfile={activeProfile}/>
             <ToastContainer />
             <main className="pt-24 pb-14 flex-grow">

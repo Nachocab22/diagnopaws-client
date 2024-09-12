@@ -22,10 +22,10 @@ const EditUser = () => {
     };
 
     return (
-        <div className='bg-[#fbfcfc] flex flex-col min-h-screen'>
+        <div className='bg-[#fbfcfc] dark:bg-[#2c2c2c] flex flex-col min-h-screen'>
             <Header handleActiveProfile={handleActiveProfile} activeProfile={activeProfile}/>
             <ToastContainer />
-            <main className="pt-24 pb-14 flex-grow">
+            <main className="pt-24 pb-4 flex-grow">
                 <Title text="Editar usuario" position='ml-5'/>
                 <div className="flex">
                     <div className="w-full md:w-9/12 md:pl-5 px-5">

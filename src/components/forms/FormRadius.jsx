@@ -5,7 +5,7 @@ const RadioGroup = ({ label, options, value, required, onChange }) => {
     return (
         <div className="p-4">
             {label && (
-                <p className="content-stretch text-slate-700 text-base font-normal font-['IBM Plex Sans'] leading-normal tracking-tight">{label}</p>
+                <p className="content-stretch text-slate-700 dark:text-zinc-200 text-base font-normal font-['IBM Plex Sans'] leading-normal tracking-tight">{label}</p>
             )}
             <div className="flex flex-col gap-2 p-2">
                 {options.map((option) => (
@@ -19,7 +19,7 @@ const RadioGroup = ({ label, options, value, required, onChange }) => {
                             required={required}
                             className='h-6 w-6'
                         />
-                        <span className="text-medium text-slate-700">{option.label}</span>
+                        <span className="text-medium text-slate-700 dark:text-zinc-200">{option.label}</span>
                     </label>
                 ))}
             </div>

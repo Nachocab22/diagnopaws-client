@@ -97,7 +97,7 @@ const VaccinationForm = ({ pet }) => {
     return (
         <div>
             <ToastContainer />
-            <div className="bg-[#7F9FB5] rounded-2xl p-3 mb-3">
+            <div className="bg-[#7F9FB5] dark:bg-[#3a4a5b] rounded-2xl p-3 mb-3">
                 <h2 className="text-3xl text-white font-bold font-['Kefa'] text-start pl-2">Nueva vacunación</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="place-self-center grid gap-4 grid-cols-1 md:grid-cols-2">
@@ -122,7 +122,7 @@ const VaccinationForm = ({ pet }) => {
                     </div>
                 </form>
             </div>
-            <div className="p-3 rounded-2xl place-self-center bg-[#7F9FB5]">
+            <div className="p-3 rounded-2xl place-self-center bg-[#7F9FB5] dark:bg-[#3a4a5b]">
                 <h2 className="text-3xl text-white font-bold font-['Kefa'] text-start pl-2 mb-3">Lista de Vacunaciones</h2>
                 {vaccinations.sort(compareDates).map(vaccination => (
                     <div key={vaccination.id}>

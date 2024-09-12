@@ -12,7 +12,7 @@ const RolSelect = ({ user, value, onRoleChange }) => {
         <div className="p-2 justify-start items-start gap-0.5">
             <div className="relative w-full">
                 <select 
-                    className="appearance-none w-36 h-10 text-sm p-3 bg-[#d9d9d9] rounded-full flex-col justify-start items-start gap-2.5 flex" 
+                    className="appearance-none w-36 h-10 text-sm p-3 bg-[#d9d9d9] dark:bg-[#8c8c8c] dark:text-white rounded-full flex-col justify-start items-start gap-2.5 flex" 
                     value={value}
                     onChange={(e) => onRoleChange(e, user)}
                 >
